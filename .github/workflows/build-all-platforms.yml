@@ -35,7 +35,7 @@ jobs:
         run: echo "APP_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       
       - name: Setup Flutter
-        uses: subosito/flutter-action@v3
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.1'
           channel: 'stable'
@@ -131,7 +131,7 @@ jobs:
         run: echo "APP_VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
       
       - name: Setup Flutter
-        uses: subosito/flutter-action@v3
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.1'
           channel: 'stable'
@@ -240,7 +240,7 @@ jobs:
             libayatana-appindicator3-dev
       
       - name: Setup Flutter
-        uses: subosito/flutter-action@v3
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.27.1'
           channel: 'stable'
