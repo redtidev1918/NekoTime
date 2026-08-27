@@ -358,7 +358,9 @@ class ThemeService extends ChangeNotifier {
   Future<void> ensureFontsLoaded(ThemeDefinition theme) async {
     if (theme.fontFamily == null ||
         theme.fontFiles == null ||
-        theme.fontFiles!.isEmpty) return;
+        theme.fontFiles!.isEmpty) {
+      return;
+    }
     final cacheKey = '${theme.id}:${theme.fontFamily}';
     if (_fontLoadedForTheme.contains(cacheKey)) {
       LogService().debug('Font already loaded for theme: ${theme.id}');

@@ -249,15 +249,15 @@ class _DigitGifV2State extends State<DigitGifV2> {
                   color: Colors.black.withValues(alpha: 0.7),
                   offset: const Offset(0, 0),
                 ),
-                Shadow(
+                const Shadow(
                   blurRadius: 3.0,
                   color: Colors.black,
-                  offset: const Offset(1.0, 1.0),
+                  offset: Offset(1.0, 1.0),
                 ),
-                Shadow(
+                const Shadow(
                   blurRadius: 3.0,
                   color: Colors.black,
-                  offset: const Offset(-1.0, -1.0),
+                  offset: Offset(-1.0, -1.0),
                 ),
               ],
             ),

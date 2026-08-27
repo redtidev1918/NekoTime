@@ -3,7 +3,7 @@
 > 一个简单、可爱的桌面悬浮时钟
 
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
-[![Flutter](https://img.shields.io/badge/Flutter-3.24-02569B?logo=flutter)](https://flutter.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-3.27-02569B?logo=flutter)](https://flutter.dev)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 <div align="center">
@@ -13,6 +13,18 @@
 **NekoTime** 是一个跨平台的桌面悬浮时钟，支持 macOS、Windows 和 Linux。它拥有强大的主题系统，你可以像给游戏打 MOD 一样轻松定制属于自己的时钟样式。
 
 > 📱 **注意**：本项目专注于桌面体验，不支持移动端（Android/iOS）。
+
+## 📑 目录
+
+- [✨ 特性](#-特性)
+- [🚀 快速开始](#-快速开始)
+- [📖 使用指南](#-使用指南)
+- [🎨 主题系统](#-主题系统)
+- [🛠 技术栈](#-技术栈)
+- [📝 更新日志](#-更新日志)
+- [🧪 测试](#-测试)
+- [🤝 贡献](#-贡献)
+- [📄 许可证](#-许可证)
 
 ## ✨ 特性
 
@@ -84,18 +96,18 @@ sudo gem install cocoapods
 
 #### 下载运行版（推荐）
 
-从 [Releases](https://github.com/zoidberg-xgd/NekoTime/releases) 下载最新版本后：
+从 [Releases](https://github.com/redtidev1918/NekoTime/releases) 下载最新版本后：
 
 ```bash
-# 1. 解压
+# 1. 解压并进入 bundle 目录
 tar -xzf NekoTime-Linux-x64-v*.tar.gz
-cd NekoTime-Linux-x64-*
+cd NekoTime-Linux-x64-v*/bundle
 
-# 2. 安装运行时依赖（首次运行必需）
-sudo ./scripts/install_linux_deps.sh
+# 2. 安装运行时依赖（首次运行必需，Debian/Ubuntu 示例）
+sudo apt install -y libgtk-3-0 libegl1 libgl1 libgles2
 
 # 3. 启动应用
-./run_linux.sh
+./neko_time
 ```
 
 #### 从源码构建
@@ -124,13 +136,15 @@ sudo pacman -S base-devel gtk3 cmake ninja
 
 #### 常见问题
 
+更多 Linux 问题排查见 [docs/LINUX_TROUBLESHOOTING.md](docs/LINUX_TROUBLESHOOTING.md)。
+
 ⚠️ **黑屏或 "No rendering surface available"**
 ```bash
 # 运行依赖安装脚本
 sudo ./scripts/install_linux_deps.sh
 
 # 或手动安装运行时库
-sudo apt install libgtk-3-0 libegl1 libgl1 libgles2
+sudo apt install libgtk-3-0 libegl1 libgl1 libgles2  # 或运行仓库里的 scripts/install_linux_deps.sh
 ```
 </details>
 
@@ -138,7 +152,7 @@ sudo apt install libgtk-3-0 libegl1 libgl1 libgles2
 
 ```bash
 # 克隆项目
-git clone https://github.com/zoidberg-xgd/NekoTime.git
+git clone https://github.com/redtidev1918/NekoTime.git
 cd NekoTime
 
 # 安装依赖
@@ -156,7 +170,7 @@ flutter build macos --release
 - **Windows**: `build/windows/x64/runner/Release/`
 - **Linux**: `build/linux/x64/release/bundle/`
 
-📘 **跨平台支持详情**：查看 [PLATFORM_SUPPORT.md](PLATFORM_SUPPORT.md) 了解各平台的详细构建和部署说明。
+📘 **跨平台支持详情**：查看 [COMPATIBILITY.md](COMPATIBILITY.md) 了解各平台的详细构建和部署说明。
 
 ## 📖 使用指南
 
@@ -330,28 +344,7 @@ themes/
 
 ## 📝 更新日志
 
-### v2.1.0 (2025-11-18)
-
-**🐛 关键 Bug 修复**
-- 修复应用卡死/无响应问题（移除性能瓶颈）
-- 移除每秒触发的大量调试日志
-- 优化窗口属性更新逻辑（仅在配置变更时执行）
-
-**⚡ 性能优化**
-- 减少 UI 重建次数
-- 智能缓存窗口配置状态
-- 降低主线程负载
-
-### v2.0.0
-
-**🎉 重大更新**
-- 修复主题切换后数字消失问题
-- 优化显示紧凑度（减少 20%-75% 留白）
-- 添加完整日志系统（文件日志 + 应用内查看器）
-- 支持多格式数字图片（GIF/PNG/JPG/WebP/BMP）
-- 新增双击隐藏功能
-- 托盘菜单快速显示/隐藏
-- 完善主题开发文档
+完整的版本历史与更新说明见 [CHANGELOG.md](CHANGELOG.md)。
 
 📋 **完整更新日志**：[CHANGELOG.md](CHANGELOG.md)
 
@@ -399,7 +392,7 @@ make test-coverage
 
 ```bash
 # 1. 克隆项目
-git clone https://github.com/zoidberg-xgd/NekoTime.git
+git clone https://github.com/redtidev1918/NekoTime.git
 cd NekoTime
 
 # 2. 获取依赖

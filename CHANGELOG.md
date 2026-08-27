@@ -258,14 +258,14 @@ themes/
 
 ---
 
-**项目仓库**：https://github.com/zoidberg-xgd/NekoTime
+**项目仓库**：https://github.com/redtidev1918/NekoTime
 
-[未发布]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.2.4...HEAD
-[2.2.4]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.2.3...v2.2.4
-[2.2.3]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.2.2...v2.2.3
-[2.2.2]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.2.1...v2.2.2
-[2.2.1]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.2.0...v2.2.1
-[2.2.0]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.1.0...v2.2.0
-[2.1.0]: https://github.com/zoidberg-xgd/NekoTime/compare/v2.0.0...v2.1.0
-[2.0.0]: https://github.com/zoidberg-xgd/NekoTime/compare/v1.0.0...v2.0.0
-[1.0.0]: https://github.com/zoidberg-xgd/NekoTime/releases/tag/v1.0.0
+[未发布]: https://github.com/redtidev1918/NekoTime/compare/v2.2.4...HEAD
+[2.2.4]: https://github.com/redtidev1918/NekoTime/compare/v2.2.3...v2.2.4
+[2.2.3]: https://github.com/redtidev1918/NekoTime/compare/v2.2.2...v2.2.3
+[2.2.2]: https://github.com/redtidev1918/NekoTime/compare/v2.2.1...v2.2.2
+[2.2.1]: https://github.com/redtidev1918/NekoTime/compare/v2.2.0...v2.2.1
+[2.2.0]: https://github.com/redtidev1918/NekoTime/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/redtidev1918/NekoTime/compare/v2.0.0...v2.1.0
+[2.0.0]: https://github.com/redtidev1918/NekoTime/compare/v1.0.0...v2.0.0
+[1.0.0]: https://github.com/redtidev1918/NekoTime/releases/tag/v1.0.0

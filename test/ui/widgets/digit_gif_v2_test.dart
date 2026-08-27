@@ -35,10 +35,10 @@ void main() {
     testWidgets('multiple widgets can be created and disposed', (tester) async {
       // Create multiple widgets
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Row(
-              children: const [
+              children: [
                 DigitGifV2(digit: '1', scale: 1.0),
                 DigitGifV2(digit: '2', scale: 1.0),
                 DigitGifV2(digit: ':', scale: 1.0),
@@ -197,10 +197,10 @@ void main() {
 
       // Second widget with same digit should use cache
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Row(
-              children: const [
+              children: [
                 DigitGifV2(digit: '1', scale: 1.0),
                 DigitGifV2(digit: '1', scale: 2.0), // Same digit, different scale
               ],
@@ -214,10 +214,10 @@ void main() {
 
     testWidgets('different digits have separate cache entries', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Row(
-              children: const [
+              children: [
                 DigitGifV2(digit: '1', scale: 1.0),
                 DigitGifV2(digit: '2', scale: 1.0),
                 DigitGifV2(digit: '3', scale: 1.0),
@@ -668,10 +668,10 @@ void main() {
 
     testWidgets('text-only theme (null gifBasePath) works correctly', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(
             body: Row(
-              children: const [
+              children: [
                 DigitGifV2(digit: '1', scale: 1.0, gifBasePath: null),
                 DigitGifV2(digit: '2', scale: 1.0, gifBasePath: null),
                 DigitGifV2(digit: ':', scale: 1.0, gifBasePath: null),

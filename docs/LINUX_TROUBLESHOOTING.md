@@ -236,5 +236,5 @@ xprop | grep -E "WM_CLASS|WM_NAME|_NET_WM"
 ## 🆘 仍然无法解决？
 
 1. 查看日志文件: `~/.local/share/NekoTime/logs/`
-2. 提交 Issue: https://github.com/zoidberg-xgd/NekoTime/issues
+2. 提交 Issue: https://github.com/redtidev1918/NekoTime/issues
 3. 包含上述调试信息

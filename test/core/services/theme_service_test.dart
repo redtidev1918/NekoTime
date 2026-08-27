@@ -136,7 +136,7 @@ void main() {
         final customThemeDir = Directory('${themesDir.path}/custom_theme');
         await customThemeDir.create();
 
-        final themeJson = '''
+        const themeJson = '''
         {
           "id": "custom_theme",
           "name": "Custom Theme",
@@ -161,7 +161,7 @@ void main() {
         final themesDir = Directory('${tempDir.path}/themes');
         await themesDir.create(recursive: true);
 
-        final themeJson = '''
+        const themeJson = '''
         {
           "id": "legacy_theme",
           "name": "Legacy Theme",

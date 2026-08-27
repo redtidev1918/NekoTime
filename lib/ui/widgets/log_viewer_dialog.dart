@@ -183,7 +183,7 @@ class _LogViewerDialogState extends State<LogViewerDialog> {
                   style: TextStyle(color: Colors.white70),
                 ),
                 const Spacer(),
-                Text(
+                const Text(
                   '显示最后 500 行',
                   style: TextStyle(color: Colors.white54, fontSize: 12),
                 ),

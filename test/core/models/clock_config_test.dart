@@ -384,10 +384,10 @@ void main() {
       final size = calculateWindowSizeFromConfig(config);
 
       // Calculate content size (without padding)
-      final digitHeight = 80.0;
-      final digitWidth = digitHeight * 0.58;
-      final colonWidth = digitWidth * 0.45;
-      final contentWidth = 4 * digitWidth + colonWidth + 2 * 2.0; // 2 spacers
+      const digitHeight = 80.0;
+      const digitWidth = digitHeight * 0.58;
+      const colonWidth = digitWidth * 0.45;
+      const contentWidth = 4 * digitWidth + colonWidth + 2 * 2.0; // 2 spacers
 
       // Padding should be reasonable (not too much, not too little)
       final horizontalPadding = size.width - contentWidth;
@@ -505,7 +505,6 @@ void main() {
 
     test('content area is centered with equal padding', () {
       final config = ClockConfig(scale: 1.0);
-      final size = calculateWindowSizeFromConfig(config);
 
       // Calculate expected padding
       final padH = 32 * config.scale; // From implementation

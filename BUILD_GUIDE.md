@@ -4,12 +4,12 @@
 
 ## 📋 目录
 
-- [快速开始](#快速开始)
-- [macOS 构建](#macos-构建)
-- [Windows 构建](#windows-构建)
-- [Linux 构建](#linux-构建)
-- [自动化脚本](#自动化脚本)
-- [故障排除](#故障排除)
+- [快速开始](#-快速开始)
+- [macOS 构建](#-macos-构建)
+- [Windows 构建](#-windows-构建)
+- [Linux 构建](#-linux-构建)
+- [自动化脚本](#-自动化脚本)
+- [故障排除](#-故障排除)
 
 ## 🚀 快速开始
 
@@ -22,12 +22,12 @@
 **平台特定**：
 - **macOS**: Xcode 12.0+, CocoaPods
 - **Windows**: Visual Studio 2019+（C++ 桌面开发）
-- **Linux**: 构建工具链（见 [Linux 构建](#linux-构建)）
+- **Linux**: 构建工具链（见 [Linux 构建](#-linux-构建)）
 
 ### 克隆项目
 
 ```bash
-git clone https://github.com/zoidberg-xgd/NekoTime.git
+git clone https://github.com/redtidev1918/NekoTime.git
 cd NekoTime
 flutter pub get
 ```
@@ -161,7 +161,7 @@ Filename: "{app}\NekoTime.exe"; Description: "启动 NekoTime"; Flags: postinsta
 
 1. 安装 [NSIS](https://nsis.sourceforge.io/)
 
-2. 创建 `installer.nsi`（参考 WINDOWS_COMPATIBILITY.md）
+2. 创建 `installer.nsi`（Windows 兼容性说明见 [COMPATIBILITY.md](COMPATIBILITY.md)）
 
 3. 编译：
 
@@ -494,9 +494,9 @@ flutter pub get
 ## 📚 相关文档
 
 - [README.md](README.md) - 项目概述
-- [PLATFORM_SUPPORT.md](PLATFORM_SUPPORT.md) - 平台支持详情
-- [WINDOWS_COMPATIBILITY.md](WINDOWS_COMPATIBILITY.md) - Windows 兼容性
-- [LINUX_COMPATIBILITY.md](LINUX_COMPATIBILITY.md) - Linux 兼容性
+- [COMPATIBILITY.md](COMPATIBILITY.md) - 各平台兼容性说明
+- [docs/LINUX_TROUBLESHOOTING.md](docs/LINUX_TROUBLESHOOTING.md) - Linux 常见问题排查
+- [APP_CONFIG.md](APP_CONFIG.md) - 应用配置说明
 - [CHANGELOG.md](CHANGELOG.md) - 更新日志
 
 ---

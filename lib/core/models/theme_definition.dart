@@ -93,12 +93,8 @@ class ThemeDefinition {
       overlayImagePath: json['overlayImage'] as String?,
       overlayOpacityMultiplier:
           (json['overlayOpacityMultiplier'] ?? 0.5).toDouble(),
-      digitSpacing: (json['digit']?['spacing'] ?? json['digitSpacing']) == null
-          ? null
-          : (json['digit']?['spacing'] ?? json['digitSpacing']).toDouble(),
-      digitAspectRatio: (json['digit']?['aspectRatio'] ?? json['digitAspectRatio']) == null
-          ? null
-          : (json['digit']?['aspectRatio'] ?? json['digitAspectRatio']).toDouble(),
+      digitSpacing: (json['digit']?['spacing'] ?? json['digitSpacing'])?.toDouble(),
+      digitAspectRatio: (json['digit']?['aspectRatio'] ?? json['digitAspectRatio'])?.toDouble(),
       fontFamily: json['fontFamily'] as String?,
       fontFiles: (json['fonts'] as List?)
           ?.map((e) {
