@@ -308,6 +308,9 @@ class _DigitGifV2State extends State<DigitGifV2> {
           _externalFile!,
           width: digitWidth,
           height: height,
+          // 按目标显示尺寸解码，避免整图解码后缩放（GIF 逐帧时尤其省 GPU）
+          cacheWidth: digitWidth.round(),
+          cacheHeight: height.round(),
           fit: BoxFit.contain,
           filterQuality: FilterQuality.none,
           gaplessPlayback: true,
@@ -328,6 +331,9 @@ class _DigitGifV2State extends State<DigitGifV2> {
           assetPath,
           width: digitWidth,
           height: height,
+          // 按目标显示尺寸解码，避免整图解码后缩放（GIF 逐帧时尤其省 GPU）
+          cacheWidth: digitWidth.round(),
+          cacheHeight: height.round(),
           fit: BoxFit.contain,
           filterQuality: FilterQuality.none,
           gaplessPlayback: true,

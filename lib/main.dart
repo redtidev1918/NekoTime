@@ -104,20 +104,23 @@ void main() async {
       
       // 平台特定配置
       if (Platform.isMacOS) {
-        // macOS: 使用 Acrylic 实现毛玻璃效果
+        // macOS: 透明窗口基础配置。系统级 acrylic 效果保持禁用——模糊由主题的
+        // BackdropFilter 单独负责，避免与系统毛玻璃叠加成双重模糊（macOS 卡顿根因），
+        // 也让 transparent/solid 主题按设计真正透明/实心。
         await flutter_acrylic.Window.makeTitlebarTransparent();
         await flutter_acrylic.Window.enableFullSizeContentView();
         await flutter_acrylic.Window.setWindowBackgroundColorToClear();
         await flutter_acrylic.Window.setEffect(
-          effect: flutter_acrylic.WindowEffect.sidebar,
+          effect: flutter_acrylic.WindowEffect.disabled,
           color: Colors.transparent,
         );
         // 再次设置大小，因为 acrylic 设置可能影响窗口
         await windowManager.setSize(initialSize);
       } else if (Platform.isWindows) {
-        // Windows: 使用 Acrylic 效果
+        // Windows: 与 macOS 一致，禁用系统 acrylic，模糊统一由主题 BackdropFilter
+        // 负责，避免与主题模糊叠加成双重模糊。
         await flutter_acrylic.Window.setEffect(
-          effect: flutter_acrylic.WindowEffect.acrylic,
+          effect: flutter_acrylic.WindowEffect.disabled,
           color: Colors.transparent,
         );
       } else if (Platform.isLinux) {

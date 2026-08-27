@@ -198,7 +198,7 @@ jobs:
           - 打开设置: 托盘菜单 → Settings
           
           问题反馈:
-          https://github.com/zoidberg-xgd/NekoTime/issues
+          https://github.com/redtidev1918/NekoTime/issues
           
           许可证: MIT License
           "@ | Out-File -FilePath "$DIST_DIR\$PKG_DIR\README.txt" -Encoding UTF8
@@ -334,7 +334,7 @@ jobs:
              - GNOME: 安装 appindicator 扩展
           
           问题反馈:
-          https://github.com/zoidberg-xgd/NekoTime/issues
+          https://github.com/redtidev1918/NekoTime/issues
           
           许可证: MIT License
           EOF
@@ -408,15 +408,15 @@ jobs:
             ```
 
             ## 📚 文档
-            - [安装指南](https://github.com/zoidberg-xgd/NekoTime#-quick-start)
-            - [主题开发](https://github.com/zoidberg-xgd/NekoTime/blob/main/themes/THEME_GUIDE.md)
-            - [构建指南](https://github.com/zoidberg-xgd/NekoTime/blob/main/BUILD_GUIDE.md)
+            - [安装指南](https://github.com/redtidev1918/NekoTime#-quick-start)
+            - [主题开发](https://github.com/redtidev1918/NekoTime/blob/main/themes/THEME_GUIDE.md)
+            - [构建指南](https://github.com/redtidev1918/NekoTime/blob/main/BUILD_GUIDE.md)
 
             ## 🐛 问题反馈
-            https://github.com/zoidberg-xgd/NekoTime/issues
+            https://github.com/redtidev1918/NekoTime/issues
 
             ---
-            **完整更新日志**: [CHANGELOG.md](https://github.com/zoidberg-xgd/NekoTime/blob/main/CHANGELOG.md)
+            **完整更新日志**: [CHANGELOG.md](https://github.com/redtidev1918/NekoTime/blob/main/CHANGELOG.md)
           draft: false
           prerelease: false
         env:
