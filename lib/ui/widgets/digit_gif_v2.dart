@@ -39,6 +39,25 @@ class _DigitGifV2State extends State<DigitGifV2> {
   bool _isExternalFile = false;
   File? _externalFile;
 
+  // 内置资源的存在性检查基于 AssetManifest（构建时生成的资源清单），
+  // 不再用 rootBundle.load 把整个 GIF 读进内存——大 GIF 只为"判断存在"
+  // 就全量读取，是切主题/首帧时的明显卡顿来源。
+  static Future<Set<String>?>? _manifestFuture;
+
+  static Future<Set<String>?> _loadBundledAssets() async {
+    try {
+      final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+      return manifest.listAssets().toSet();
+    } on Object {
+      // 清单不可用时返回 null：回退为"视为存在"，由 errorBuilder 兜底
+      return null;
+    }
+  }
+
+  /// 进程内只加载一次清单
+  static Future<Set<String>?> get _bundledAssetsOnce =>
+      _manifestFuture ??= _loadBundledAssets();
+
   // 智能缓存系统：按主题分组，保留最近使用的主题缓存
   static const int _maxCachedThemes = 3; // 最多缓存 3 个主题
   static final List<String> _recentThemes = []; // 最近使用的主题列表（LRU）
@@ -131,7 +150,7 @@ class _DigitGifV2State extends State<DigitGifV2> {
     final fileCache = _currentFileCache;
 
     if (isBuiltinAsset) {
-      // 内置资源：检查 AssetBundle
+      // 内置资源：基于 AssetManifest 判断存在性（不读文件内容）
       if (assetCache.containsKey(assetPath)) {
         if (mounted) {
           setState(() {
@@ -143,25 +162,15 @@ class _DigitGifV2State extends State<DigitGifV2> {
         return;
       }
 
-      try {
-        await rootBundle.load(assetPath);
-        assetCache[assetPath] = true;
-        if (mounted) {
-          setState(() {
-            _assetExists = true;
-            _isExternalFile = false;
-            _isCheckingAsset = false;
-          });
-        }
-      } catch (e) {
-        assetCache[assetPath] = false;
-        if (mounted) {
-          setState(() {
-            _assetExists = false;
-            _isExternalFile = false;
-            _isCheckingAsset = false;
-          });
-        }
+      final bundled = await _bundledAssetsOnce;
+      final exists = bundled?.contains(assetPath) ?? true;
+      assetCache[assetPath] = exists;
+      if (mounted) {
+        setState(() {
+          _assetExists = exists;
+          _isExternalFile = false;
+          _isCheckingAsset = false;
+        });
       }
     } else {
       // 外部文件：检查文件系统

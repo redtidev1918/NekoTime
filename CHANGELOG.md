@@ -30,6 +30,16 @@ NekoTime 的所有重要变更都将记录在此文件中。
 - 重写 ThemeService 测试
 - 总计 98 个单元测试全部通过
 
+## [2.3.4] - 2026-08-27
+
+### 优化
+
+- **主题加载性能**：内置数字资源的存在性检查改用构建时的 AssetManifest 清单，
+  不再把整个 GIF 读进内存只为判断"存不存在"——大 GIF 主题的首次加载与切换
+  明显更快、内存峰值更低；清单不可用时自动回退到 errorBuilder 文本兜底。
+- **仓库可检索性**：GitHub topics 扩充（neko / cat / cute / desktop-pet /
+  anime-clock / overlay-clock 等），方便更多用户搜到本项目。
+
 ## [2.3.3] - 2026-08-27
 
 ### 修复 / 优化
