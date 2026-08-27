@@ -41,7 +41,7 @@ class ThemeService extends ChangeNotifier {
     final markerFile = File(p.join(themesDir.path, '.themes_installed_v4'));
     // 同时也检查核心主题目录是否存在
     final frostedGlassDir = Directory(p.join(themesDir.path, 'frosted_glass'));
-    
+
     // 只有当标记文件存在，且核心主题(frosted_glass)也存在时，才认为已完全安装
     if (await markerFile.exists() && await frostedGlassDir.exists()) {
       LogService().debug('Builtin themes already installed (v4)');
@@ -49,7 +49,7 @@ class ThemeService extends ChangeNotifier {
     }
 
     LogService().info('Installing builtin themes to user directory (v4)...');
-    
+
     try {
       // 1. 安装 frosted_glass（默认内置主题）
       await _installThemeFromAssets(
@@ -58,7 +58,7 @@ class ThemeService extends ChangeNotifier {
         assetPath: 'themes/builtin/frosted_glass',
         forceUpdateConfig: true, // 强制更新配置以确保最新
       );
-      
+
       // 2. 安装 example_mod（示例主题）
       await _installThemeFromAssets(
         themesDir: themesDir,
@@ -66,20 +66,20 @@ class ThemeService extends ChangeNotifier {
         assetPath: 'themes/example_mod',
         forceUpdateConfig: true, // 强制更新配置以修复旧版本的 GIF 问题
       );
-      
+
       // 创建标记文件
       await markerFile.writeAsString('v4');
-      
+
       // 清理旧版本的标记文件
       final oldMarkers = ['v1', 'v2', 'v3'];
       for (final v in oldMarkers) {
         final f = File(p.join(themesDir.path, '.themes_installed_$v'));
         if (await f.exists()) await f.delete();
       }
-      
+
       LogService().info('Builtin themes installation completed');
     } catch (e, stackTrace) {
-      LogService().error('Failed to install builtin themes', 
+      LogService().error('Failed to install builtin themes',
           error: e, stackTrace: stackTrace);
     }
   }
@@ -93,22 +93,24 @@ class ThemeService extends ChangeNotifier {
   }) async {
     final themeDir = Directory(p.join(themesDir.path, themeId));
     final bool exists = await themeDir.exists();
-    
+
     if (!exists) {
       await themeDir.create(recursive: true);
     } else if (!forceUpdateConfig) {
       LogService().debug('Theme $themeId already exists, skipping');
       return;
     }
-    
+
     // 复制/更新 theme.json
     try {
       final themeJson = await rootBundle.loadString('$assetPath/theme.json');
       await File(p.join(themeDir.path, 'theme.json')).writeAsString(themeJson);
       LogService().debug('Updated theme.json for $themeId');
     } catch (e) {
-      if (!exists) { // 只有在新安装且失败时才创建默认配置
-        LogService().warning('No theme.json found for $themeId, creating default');
+      if (!exists) {
+        // 只有在新安装且失败时才创建默认配置
+        LogService()
+            .warning('No theme.json found for $themeId, creating default');
         final defaultJson = '''{
   "id": "$themeId",
   "name": "${themeId.replaceAll('_', ' ').split(' ').map((w) => w[0].toUpperCase() + w.substring(1)).join(' ')}",
@@ -121,33 +123,35 @@ class ThemeService extends ChangeNotifier {
   "tintOpacityMultiplier": 0.15,
   "digit": { "spacing": 2, "gifPath": "digits", "format": "gif" }
 }''';
-        await File(p.join(themeDir.path, 'theme.json')).writeAsString(defaultJson);
+        await File(p.join(themeDir.path, 'theme.json'))
+            .writeAsString(defaultJson);
       }
     }
-    
+
     // 复制数字图片 (仅当目标目录不存在时，或者这是一个全新安装)
     // 注意：我们不强制覆盖用户的图片，只更新 json 配置
     final digitsDir = Directory(p.join(themeDir.path, 'digits'));
     if (!await digitsDir.exists()) {
-       await digitsDir.create(recursive: true);
-       
-       // 尝试复制 digits
-       try {
-         // ... (existing logic)
-         for (int i = 0; i <= 9; i++) {
-           try {
-             final digitBytes = await rootBundle.load('$assetPath/digits/$i.gif');
-             await File(p.join(digitsDir.path, '$i.gif'))
-                 .writeAsBytes(digitBytes.buffer.asUint8List());
-           } catch (e) {
-             // ignore
-           }
-         }
-       } catch (e) {
-         LogService().warning('Error copying digits for $themeId: $e');
-       }
+      await digitsDir.create(recursive: true);
+
+      // 尝试复制 digits
+      try {
+        // ... (existing logic)
+        for (int i = 0; i <= 9; i++) {
+          try {
+            final digitBytes =
+                await rootBundle.load('$assetPath/digits/$i.gif');
+            await File(p.join(digitsDir.path, '$i.gif'))
+                .writeAsBytes(digitBytes.buffer.asUint8List());
+          } catch (e) {
+            // ignore
+          }
+        }
+      } catch (e) {
+        LogService().warning('Error copying digits for $themeId: $e');
+      }
     }
-    
+
     LogService().info('Theme installed/updated: $themeId');
   }
 
@@ -160,7 +164,8 @@ class ThemeService extends ChangeNotifier {
 
     // 如果没有加载到任何主题，创建一个 fallback
     if (_themes.isEmpty) {
-      LogService().warning('No themes found after reload, creating fallback theme');
+      LogService()
+          .warning('No themes found after reload, creating fallback theme');
       _themes['fallback'] = _createFallbackTheme();
     }
 
@@ -217,15 +222,16 @@ class ThemeService extends ChangeNotifier {
 
   /// Detect digit dimensions from the first digit image (0.gif/png/etc)
   /// Returns (aspectRatio, baseHeight) or null if detection fails
-  Future<(double, double)?> _detectDigitDimensions(ThemeDefinition theme) async {
+  Future<(double, double)?> _detectDigitDimensions(
+      ThemeDefinition theme) async {
     try {
       final gifPath = theme.digitGifPath;
       final format = theme.digitImageFormat ?? 'gif';
-      
+
       if (gifPath == null) return null;
-      
+
       Uint8List? imageBytes;
-      
+
       // Check if it's a bundled asset or external file
       if (gifPath.startsWith('themes/') || gifPath.startsWith('assets/')) {
         // Bundled asset
@@ -248,23 +254,23 @@ class ThemeService extends ChangeNotifier {
           return null;
         }
       }
-      
+
       if (imageBytes == null) return null;
-      
+
       // Decode image to get dimensions
       final codec = await ui.instantiateImageCodec(imageBytes);
       final frame = await codec.getNextFrame();
       final image = frame.image;
-      
+
       final width = image.width.toDouble();
       final height = image.height.toDouble();
-      
+
       if (height <= 0) return null;
-      
+
       final aspectRatio = width / height;
       LogService().debug('Detected digit dimensions for ${theme.id}: '
           'aspectRatio=$aspectRatio (${width.toInt()}x${height.toInt()})');
-      
+
       return (aspectRatio, height);
     } catch (e, stackTrace) {
       LogService().error('Failed to detect digit dimensions for ${theme.id}',

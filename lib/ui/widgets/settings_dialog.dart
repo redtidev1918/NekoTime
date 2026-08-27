@@ -101,7 +101,8 @@ class SettingsDialog extends StatelessWidget {
                         icon: const Icon(Icons.folder_open, size: 16),
                         tooltip: '打开文件夹',
                         onPressed: () {
-                          Process.run('open', [themeService.themesDirectoryPath!]);
+                          Process.run(
+                              'open', [themeService.themesDirectoryPath!]);
                         },
                         padding: EdgeInsets.zero,
                         constraints: const BoxConstraints(),

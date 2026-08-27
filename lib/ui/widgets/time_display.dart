@@ -38,7 +38,10 @@ class TimeDisplay extends StatelessWidget {
       }
       children.add(
         DigitGifV2(
-          key: ValueKey('digit_${i}_${digits[i]}'), // 给每个数字widget添加唯一key
+          // 槽位级稳定 key：秒位每秒变化时复用 State（didUpdateWidget 内联
+          // 完成资源检查与图像切换），避免每秒销毁重建 State 触发两次构建
+          // 与 GIF 动画重启——这是桌面端卡顿的主要来源之一。
+          key: ValueKey('digit_slot_$i'),
           digit: digits[i],
           scale: scale,
           fontFamily: fontFamily,

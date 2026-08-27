@@ -28,7 +28,8 @@ void main() {
       expect(timeService.formatTime(noon), equals(['1', '2', ':', '0', '0']));
 
       final midnight = DateTime(2023, 1, 1, 0, 0);
-      expect(timeService.formatTime(midnight), equals(['0', '0', ':', '0', '0']));
+      expect(
+          timeService.formatTime(midnight), equals(['0', '0', ':', '0', '0']));
     });
 
     test('timeStream emits values', () async {

@@ -38,15 +38,18 @@ class _DigitGifV2State extends State<DigitGifV2> {
   bool _isCheckingAsset = true;
   bool _isExternalFile = false;
   File? _externalFile;
-  
+
   // 智能缓存系统：按主题分组，保留最近使用的主题缓存
   static const int _maxCachedThemes = 3; // 最多缓存 3 个主题
   static final List<String> _recentThemes = []; // 最近使用的主题列表（LRU）
-  static final Map<String, Map<String, bool>> _assetExistsCache = {}; // themeKey -> {assetPath -> exists}
-  static final Map<String, Map<String, File?>> _externalFileCache = {}; // themeKey -> {cacheKey -> file}
+  static final Map<String, Map<String, bool>> _assetExistsCache =
+      {}; // themeKey -> {assetPath -> exists}
+  static final Map<String, Map<String, File?>> _externalFileCache =
+      {}; // themeKey -> {cacheKey -> file}
 
   /// 获取当前主题的缓存 key
-  String get _themeKey => '${widget.gifBasePath ?? 'null'}|${widget.assetsBasePath ?? 'null'}';
+  String get _themeKey =>
+      '${widget.gifBasePath ?? 'null'}|${widget.assetsBasePath ?? 'null'}';
 
   /// 更新 LRU 缓存，清理过期主题
   static void _updateLRU(String themeKey) {
@@ -54,7 +57,7 @@ class _DigitGifV2State extends State<DigitGifV2> {
     _recentThemes.remove(themeKey);
     // 添加到最前面
     _recentThemes.insert(0, themeKey);
-    
+
     // 清理超出限制的旧主题缓存
     while (_recentThemes.length > _maxCachedThemes) {
       final oldTheme = _recentThemes.removeLast();
@@ -120,7 +123,8 @@ class _DigitGifV2State extends State<DigitGifV2> {
     final assetPath = '$imagePath/${widget.digit}.$format';
 
     // 判断是内置资源还是外部文件
-    final bool isBuiltinAsset = imagePath.startsWith('assets/') || imagePath.startsWith('themes/');
+    final bool isBuiltinAsset =
+        imagePath.startsWith('assets/') || imagePath.startsWith('themes/');
 
     // 获取当前主题的缓存
     final assetCache = _currentAssetCache;
@@ -187,7 +191,8 @@ class _DigitGifV2State extends State<DigitGifV2> {
       }
 
       // 查找外部文件
-      final file = File(p.join(widget.assetsBasePath!, imagePath, '${widget.digit}.$format'));
+      final file = File(
+          p.join(widget.assetsBasePath!, imagePath, '${widget.digit}.$format'));
       if (file.existsSync()) {
         fileCache[cacheKey] = file;
         if (mounted) {
@@ -273,20 +278,20 @@ class _DigitGifV2State extends State<DigitGifV2> {
 
     // 文本后备 widget
     Widget textFallback() => SizedBox(
-      width: digitWidth,
-      height: height,
-      child: Center(
-        child: Text(
-          widget.digit,
-          style: TextStyle(
-            fontSize: height * 0.6,
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontFamily: widget.fontFamily,
+          width: digitWidth,
+          height: height,
+          child: Center(
+            child: Text(
+              widget.digit,
+              style: TextStyle(
+                fontSize: height * 0.6,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontFamily: widget.fontFamily,
+              ),
+            ),
           ),
-        ),
-      ),
-    );
+        );
 
     // 如果资源不存在，直接显示文本
     if (!_assetExists) {

@@ -101,7 +101,7 @@ void main() async {
           configService.config.positionY!,
         ));
       }
-      
+
       // 平台特定配置
       if (Platform.isMacOS) {
         // macOS: 透明窗口基础配置。系统级 acrylic 效果保持禁用——模糊由主题的
@@ -127,7 +127,7 @@ void main() async {
         // Linux: 激进的透明窗口配置
         await logService.info('Linux: Configuring aggressive transparency');
         await windowManager.setBackgroundColor(Colors.transparent);
-        
+
         // 尝试移除所有窗口装饰
         try {
           await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
@@ -139,23 +139,24 @@ void main() async {
       // 通用窗口设置（所有平台）
       await windowManager.setAsFrameless();
       await windowManager.setResizable(false);
-      
+
       // Linux 特殊处理：完全禁用阴影和装饰
       if (Platform.isLinux) {
         await windowManager.setHasShadow(false);
         // 先不显示窗口，等待设置完成
         await logService.info('Linux: Applying window settings...');
-        
+
         // 多次设置大小以确保生效
         await windowManager.setSize(initialSize);
         await Future.delayed(const Duration(milliseconds: 50));
         await windowManager.setSize(initialSize);
-        
+
         // 强制最小和最大尺寸相同，防止窗口管理器添加边框
         await windowManager.setMinimumSize(initialSize);
         await windowManager.setMaximumSize(initialSize);
-        
-        await logService.info('Linux: Window constrained to ${initialSize.width}x${initialSize.height}');
+
+        await logService.info(
+            'Linux: Window constrained to ${initialSize.width}x${initialSize.height}');
       } else {
         await windowManager.setHasShadow(true);
       }
@@ -163,18 +164,18 @@ void main() async {
       // 先设置透明度，再显示窗口
       final savedOpacity = configService.config.opacity.clamp(0.1, 1.0);
       await windowManager.setOpacity(savedOpacity);
-      
+
       // 显示和聚焦窗口
       await windowManager.show();
       await windowManager.focus();
-      
+
       // macOS 需要在 show() 后再次设置透明度，因为 show() 可能会重置它
       if (Platform.isMacOS) {
         await Future.delayed(const Duration(milliseconds: 100));
         await windowManager.setOpacity(savedOpacity);
       }
       await logService.info('Applied saved opacity: $savedOpacity');
-      
+
       // Linux 最后确认：再次设置大小
       if (Platform.isLinux) {
         await Future.delayed(const Duration(milliseconds: 200));
@@ -208,7 +209,8 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with TrayController<MyApp>, WindowListener {
+class _MyAppState extends State<MyApp>
+    with TrayController<MyApp>, WindowListener {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   Timer? _savePositionTimer;
 
@@ -219,7 +221,7 @@ class _MyAppState extends State<MyApp> with TrayController<MyApp>, WindowListene
   void initState() {
     super.initState();
     windowManager.addListener(this);
-    
+
     // 延迟并安全地初始化托盘
     if (Platform.isMacOS || Platform.isWindows || Platform.isLinux) {
       Future.delayed(const Duration(seconds: 1), () async {

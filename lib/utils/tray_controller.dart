@@ -32,14 +32,14 @@ mixin TrayController<T extends StatefulWidget> on State<T> {
         final tempDir = await getTemporaryDirectory();
         final iconPath = path.join(tempDir.path, 'tray_icon.ico');
         final iconFile = File(iconPath);
-        
+
         // 如果文件不存在，从 assets 复制
         if (!iconFile.existsSync()) {
           final byteData = await rootBundle.load('assets/icons/tray_icon.ico');
           await iconFile.writeAsBytes(byteData.buffer.asUint8List());
           LogService().info('Windows tray icon copied to: $iconPath');
         }
-        
+
         return iconPath;
       } catch (e) {
         LogService().error('Failed to load Windows tray icon: $e');
@@ -51,14 +51,15 @@ mixin TrayController<T extends StatefulWidget> on State<T> {
         final tempDir = await getTemporaryDirectory();
         final iconPath = path.join(tempDir.path, 'tray_icon.png');
         final iconFile = File(iconPath);
-        
+
         // 如果文件不存在，从 assets 复制（使用 app_icon_source.png）
         if (!iconFile.existsSync()) {
-          final byteData = await rootBundle.load('assets/icons/app_icon_source.png');
+          final byteData =
+              await rootBundle.load('assets/icons/app_icon_source.png');
           await iconFile.writeAsBytes(byteData.buffer.asUint8List());
           LogService().info('Linux tray icon copied to: $iconPath');
         }
-        
+
         return iconPath;
       } catch (e) {
         LogService().error('Failed to load Linux tray icon: $e');
@@ -73,7 +74,7 @@ mixin TrayController<T extends StatefulWidget> on State<T> {
     try {
       // 获取适合平台的图标路径
       final iconPath = await _getTrayIconPath();
-      
+
       // 初始化托盘
       await _tray.initSystemTray(
         iconPath: iconPath,
@@ -90,7 +91,7 @@ mixin TrayController<T extends StatefulWidget> on State<T> {
         title: Platform.isMacOS ? '🕐' : '',
         toolTip: 'NekoTime - 双击窗口隐藏，右键菜单显示',
       );
-      
+
       LogService().info('System tray initialized successfully');
     } catch (e) {
       LogService().error('SystemTray init failed: $e');
@@ -176,7 +177,8 @@ mixin TrayController<T extends StatefulWidget> on State<T> {
             await windowManager.setOpacity(configOpacity);
             await windowManager.show();
             await windowManager.focus();
-            LogService().info('Window shown via tray menu (opacity=$configOpacity)');
+            LogService()
+                .info('Window shown via tray menu (opacity=$configOpacity)');
           }
         },
       ),

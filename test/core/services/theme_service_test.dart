@@ -32,7 +32,7 @@ void main() {
       if (await tempDir.exists()) {
         await tempDir.delete(recursive: true);
       }
-      
+
       const channel = MethodChannel('plugins.flutter.io/path_provider');
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(channel, null);
@@ -41,7 +41,7 @@ void main() {
     group('init', () {
       test('creates themes directory if not exists', () async {
         await themeService.init();
-        
+
         final themesDir = Directory('${tempDir.path}/themes');
         expect(await themesDir.exists(), isTrue);
       });
@@ -49,14 +49,14 @@ void main() {
       test('creates fallback theme if no themes found', () async {
         // Init without any themes in directory
         await themeService.init();
-        
+
         // Should have at least fallback theme
         expect(themeService.themes, isNotEmpty);
       });
 
       test('themesDirectoryPath returns correct path after init', () async {
         await themeService.init();
-        
+
         expect(themeService.themesDirectoryPath, isNotNull);
         expect(themeService.themesDirectoryPath, contains('themes'));
       });
@@ -145,8 +145,9 @@ void main() {
           "padding": {"preset": "compact"}
         }
         ''';
-        
-        await File('${customThemeDir.path}/theme.json').writeAsString(themeJson);
+
+        await File('${customThemeDir.path}/theme.json')
+            .writeAsString(themeJson);
 
         await themeService.init();
 
@@ -169,7 +170,8 @@ void main() {
         }
         ''';
 
-        await File('${themesDir.path}/legacy_theme.json').writeAsString(themeJson);
+        await File('${themesDir.path}/legacy_theme.json')
+            .writeAsString(themeJson);
 
         await themeService.init();
 
@@ -229,7 +231,8 @@ void main() {
         await themesDir.create(recursive: true);
 
         // Create default theme
-        final defaultThemeDir = Directory('${themesDir.path}/${ThemeDefinition.defaultThemeId}');
+        final defaultThemeDir =
+            Directory('${themesDir.path}/${ThemeDefinition.defaultThemeId}');
         await defaultThemeDir.create();
         await File('${defaultThemeDir.path}/theme.json').writeAsString('''
         {"id": "${ThemeDefinition.defaultThemeId}", "name": "Frosted Glass", "kind": "blur"}
@@ -265,17 +268,19 @@ void main() {
 
         final themes = themeService.themes;
         final names = themes.map((t) => t.name).toList();
-        
+
         // Should be sorted alphabetically (excluding default theme position)
-        expect(names.indexOf('Alpha Theme'), lessThan(names.indexOf('Beta Theme')));
-        expect(names.indexOf('Beta Theme'), lessThan(names.indexOf('Zebra Theme')));
+        expect(names.indexOf('Alpha Theme'),
+            lessThan(names.indexOf('Beta Theme')));
+        expect(names.indexOf('Beta Theme'),
+            lessThan(names.indexOf('Zebra Theme')));
       });
     });
 
     group('fallback theme', () {
       test('fallback theme has correct properties', () {
         final theme = themeService.resolve('non_existent');
-        
+
         expect(theme.id, equals('fallback'));
         expect(theme.name, equals('Fallback'));
         expect(theme.kind, equals(ThemeKind.transparent));

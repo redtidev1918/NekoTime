@@ -30,16 +30,17 @@ void main() {
 
     test('init loads default config when prefs are empty', () async {
       await configService.init();
-      
+
       expect(configService.config.scale, equals(1.0));
       expect(configService.config.opacity, equals(0.85));
     });
 
     test('init loads saved config', () async {
       SharedPreferences.setMockInitialValues({
-        'clock_config': '{"scale": 2.5, "opacity": 0.5, "themeId": "saved_theme"}'
+        'clock_config':
+            '{"scale": 2.5, "opacity": 0.5, "themeId": "saved_theme"}'
       });
-      
+
       // Re-init to load new values
       await configService.init();
 
@@ -50,7 +51,7 @@ void main() {
 
     test('saveConfig updates config and persists it', () async {
       await configService.init();
-      
+
       final newConfig = ClockConfig(scale: 3.0, themeId: 'new_theme');
       await configService.saveConfig(newConfig);
 
@@ -85,7 +86,7 @@ void main() {
       expect(configService.config.opacity, equals(0.3));
       expect(notified, isTrue);
     });
-    
+
     test('setTheme updates themeId', () async {
       await configService.init();
       await configService.setTheme('dark_theme');
@@ -101,15 +102,17 @@ void main() {
     test('toggleLockPosition toggles value', () async {
       await configService.init();
       expect(configService.config.lockPosition, isFalse);
-      
+
       await configService.toggleLockPosition();
       expect(configService.config.lockPosition, isTrue);
-      
+
       await configService.toggleLockPosition();
       expect(configService.config.lockPosition, isFalse);
     });
 
-    test('savePosition updates position and persists it without notifying listeners', () async {
+    test(
+        'savePosition updates position and persists it without notifying listeners',
+        () async {
       await configService.init();
       bool notified = false;
       configService.addListener(() => notified = true);

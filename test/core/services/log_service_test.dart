@@ -27,7 +27,7 @@ void main() {
       // Reset singleton
       logService = LogService();
       logService.reset();
-      
+
       await logService.init();
     });
 
@@ -36,7 +36,7 @@ void main() {
       if (await tempDir.exists()) {
         await tempDir.delete(recursive: true);
       }
-      
+
       const channel = MethodChannel('plugins.flutter.io/path_provider');
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(channel, null);
@@ -61,16 +61,16 @@ void main() {
       } catch (e, s) {
         await logService.error('Test error message', error: e, stackTrace: s);
       }
-      
+
       final content = await logService.readLogs();
       expect(content, contains('[ERROR] Test error message'));
       expect(content, contains('Exception: Test error'));
     });
-    
+
     test('clearLogs removes content', () async {
       await logService.info('To be cleared');
       await logService.clearLogs();
-      
+
       // File contains "Logs cleared"
       final content = await logService.readLogs();
       expect(content, contains('[INFO] Logs cleared'));

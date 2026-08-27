@@ -153,15 +153,18 @@ void main() {
       final size = calculateWindowSizeFromConfig(config);
 
       // Should be approximately 75% of default size (with ceil + 1 margin)
-      final defaultSize = calculateWindowSizeFromConfig(ClockConfig(scale: 1.0));
+      final defaultSize =
+          calculateWindowSizeFromConfig(ClockConfig(scale: 1.0));
       expect(size.width, closeTo(defaultSize.width * 0.75, 5.0));
       expect(size.height, closeTo(defaultSize.height * 0.75, 5.0));
     });
 
     test('respects custom digitSpacing', () {
       final config = ClockConfig(scale: 1.0);
-      final sizeDefault = calculateWindowSizeFromConfig(config, digitSpacing: 2.0);
-      final sizeWide = calculateWindowSizeFromConfig(config, digitSpacing: 10.0);
+      final sizeDefault =
+          calculateWindowSizeFromConfig(config, digitSpacing: 2.0);
+      final sizeWide =
+          calculateWindowSizeFromConfig(config, digitSpacing: 10.0);
 
       // Wider spacing should result in wider window
       // Difference = 2 spacers * (10 - 2) = 16
@@ -172,7 +175,8 @@ void main() {
 
     test('zero digitSpacing produces narrower window', () {
       final config = ClockConfig(scale: 1.0);
-      final sizeDefault = calculateWindowSizeFromConfig(config, digitSpacing: 2.0);
+      final sizeDefault =
+          calculateWindowSizeFromConfig(config, digitSpacing: 2.0);
       final sizeZero = calculateWindowSizeFromConfig(config, digitSpacing: 0.0);
 
       // Zero spacing should be narrower by 2 * 2 = 4
@@ -181,8 +185,10 @@ void main() {
 
     test('respects custom digitAspectRatio', () {
       final config = ClockConfig(scale: 1.0);
-      final sizeDefault = calculateWindowSizeFromConfig(config, digitAspectRatio: 0.58);
-      final sizeWide = calculateWindowSizeFromConfig(config, digitAspectRatio: 1.0);
+      final sizeDefault =
+          calculateWindowSizeFromConfig(config, digitAspectRatio: 0.58);
+      final sizeWide =
+          calculateWindowSizeFromConfig(config, digitAspectRatio: 1.0);
 
       // Wider aspect ratio should result in wider window
       // digitHeight = 80, digitWidth changes from 46.4 to 80
@@ -195,7 +201,8 @@ void main() {
     test('large scale factor produces reasonable size', () {
       final config = ClockConfig(scale: 3.0);
       final size = calculateWindowSizeFromConfig(config);
-      final defaultSize = calculateWindowSizeFromConfig(ClockConfig(scale: 1.0));
+      final defaultSize =
+          calculateWindowSizeFromConfig(ClockConfig(scale: 1.0));
 
       // Should be approximately 3x the default (with ceil + 1 margin)
       expect(size.width, closeTo(defaultSize.width * 3, 10.0));
@@ -276,7 +283,8 @@ void main() {
 
     test('very large digitBaseHeight (200) produces valid size', () {
       final config = ClockConfig(scale: 1.0);
-      final size = calculateWindowSizeFromConfig(config, digitBaseHeight: 200.0);
+      final size =
+          calculateWindowSizeFromConfig(config, digitBaseHeight: 200.0);
 
       expect(size.width, greaterThan(0));
       expect(size.height, greaterThan(0));
@@ -326,8 +334,10 @@ void main() {
         digitSpacing: 2.0,
       );
 
-      expect(sizeWithDefaults.width, closeTo(sizeWithExplicitDefaults.width, 0.1));
-      expect(sizeWithDefaults.height, closeTo(sizeWithExplicitDefaults.height, 0.1));
+      expect(
+          sizeWithDefaults.width, closeTo(sizeWithExplicitDefaults.width, 0.1));
+      expect(sizeWithDefaults.height,
+          closeTo(sizeWithExplicitDefaults.height, 0.1));
     });
 
     test('fractional scale values work correctly', () {
@@ -458,7 +468,8 @@ void main() {
       Size? previousSize;
 
       for (final spacing in spacings) {
-        final size = calculateWindowSizeFromConfig(config, digitSpacing: spacing);
+        final size =
+            calculateWindowSizeFromConfig(config, digitSpacing: spacing);
 
         if (previousSize != null) {
           // Width should increase with spacing
@@ -475,9 +486,12 @@ void main() {
     test('different aspect ratios produce visually distinct sizes', () {
       final config = ClockConfig(scale: 1.0);
 
-      final narrowSize = calculateWindowSizeFromConfig(config, digitAspectRatio: 0.4);
-      final normalSize = calculateWindowSizeFromConfig(config, digitAspectRatio: 0.58);
-      final wideSize = calculateWindowSizeFromConfig(config, digitAspectRatio: 0.8);
+      final narrowSize =
+          calculateWindowSizeFromConfig(config, digitAspectRatio: 0.4);
+      final normalSize =
+          calculateWindowSizeFromConfig(config, digitAspectRatio: 0.58);
+      final wideSize =
+          calculateWindowSizeFromConfig(config, digitAspectRatio: 0.8);
 
       // Widths should be ordered
       expect(narrowSize.width, lessThan(normalSize.width));

@@ -218,7 +218,8 @@ class _ClockScreenState extends State<ClockScreen> with WindowListener {
         // 在配置改变时或首次构建时更新窗口
         if (_lastConfigThemeId != config.themeId ||
             _lastScale != config.scale ||
-            _lastConfigThemeId == null) {  // 首次构建
+            _lastConfigThemeId == null) {
+          // 首次构建
           _lastConfigThemeId = config.themeId;
           _lastScale = config.scale;
           // 直接更新窗口大小，不需要额外的回调

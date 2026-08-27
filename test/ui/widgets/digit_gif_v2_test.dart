@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   group('DigitGifV2 Memory Tests', () {
-    testWidgets('widget can be created and disposed without leaks', (tester) async {
+    testWidgets('widget can be created and disposed without leaks',
+        (tester) async {
       // Create widget
       await tester.pumpWidget(
         const MaterialApp(
@@ -202,7 +203,8 @@ void main() {
             body: Row(
               children: [
                 DigitGifV2(digit: '1', scale: 1.0),
-                DigitGifV2(digit: '1', scale: 2.0), // Same digit, different scale
+                DigitGifV2(
+                    digit: '1', scale: 2.0), // Same digit, different scale
               ],
             ),
           ),
@@ -321,7 +323,8 @@ void main() {
       expect(find.byType(DigitGifV2), findsOneWidget);
     });
 
-    testWidgets('widget falls back to text when external file not found', (tester) async {
+    testWidgets('widget falls back to text when external file not found',
+        (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -342,7 +345,8 @@ void main() {
       expect(find.text('7'), findsOneWidget);
     });
 
-    testWidgets('widget handles null assetsBasePath for external path', (tester) async {
+    testWidgets('widget handles null assetsBasePath for external path',
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -363,7 +367,8 @@ void main() {
       expect(find.text('3'), findsOneWidget);
     });
 
-    testWidgets('widget with builtin asset path works without assetsBasePath', (tester) async {
+    testWidgets('widget with builtin asset path works without assetsBasePath',
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -451,7 +456,8 @@ void main() {
       expect(find.byType(DigitGifV2), findsOneWidget);
     });
 
-    testWidgets('relative path without prefix is treated as external', (tester) async {
+    testWidgets('relative path without prefix is treated as external',
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
@@ -666,7 +672,8 @@ void main() {
       expect(find.byType(DigitGifV2), findsOneWidget);
     });
 
-    testWidgets('text-only theme (null gifBasePath) works correctly', (tester) async {
+    testWidgets('text-only theme (null gifBasePath) works correctly',
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
