@@ -387,6 +387,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: release-assets/*
+          make_latest: true
           body: |
             ## macOS
             - **DMG 安装包** (推荐): `NekoTime-macOS-v${{ env.APP_VERSION }}.dmg`
@@ -421,3 +422,21 @@ jobs:
           prerelease: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Keep only the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api --paginate \
+            "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
+            --jq '.[].tag_name' |
+          while IFS= read -r release_tag; do
+            if [ "$release_tag" = "$GITHUB_REF_NAME" ]; then
+              continue
+            fi
+            echo "Deleting old GitHub release: $release_tag"
+            gh release delete "$release_tag" \
+              --repo "$GITHUB_REPOSITORY" \
+              --yes --cleanup-tag
+          done
