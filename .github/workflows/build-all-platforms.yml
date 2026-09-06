@@ -108,7 +108,7 @@ jobs:
           shasum -a 256 *.dmg *.zip > SHA256SUMS-macOS.txt || true
       
       - name: Upload macOS artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: macos-build
           path: |
@@ -211,7 +211,7 @@ jobs:
           "$($hash.Hash)  $APP_NAME-Windows-v$VERSION.zip" | Out-File -FilePath "$DIST_DIR\SHA256SUMS-Windows.txt" -Encoding ASCII
       
       - name: Upload Windows artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: windows-build
           path: |
@@ -347,7 +347,7 @@ jobs:
           sha256sum "$APP_NAME-Linux-x64-v$VERSION.tar.gz" > SHA256SUMS-Linux.txt
       
       - name: Upload Linux artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: linux-build
           path: |
