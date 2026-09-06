@@ -28,7 +28,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Set APP_VERSION from tag
         if: startsWith(github.ref, 'refs/tags/v')
@@ -123,7 +123,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Set APP_VERSION from tag
         if: startsWith(github.ref, 'refs/tags/v')
@@ -225,7 +225,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Set APP_VERSION from tag
         if: startsWith(github.ref, 'refs/tags/v')
@@ -363,7 +363,7 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       
       - name: Download all artifacts
         uses: actions/download-artifact@v4
