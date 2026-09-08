@@ -5,6 +5,7 @@ rm -rf dist/release && mkdir -p dist/release
 flutter pub get
 flutter test
 flutter config --enable-linux-desktop --enable-macos-desktop --enable-windows-desktop --no-analytics
+flutter create --platforms=linux,macos,windows --org=com.nekotime --project-name=neko_time .
 case "$RUNNER_OS" in
   Linux)
     sudo apt-get update
@@ -24,6 +25,6 @@ case "$RUNNER_OS" in
     ;;
   Windows)
     flutter build windows --release
-    powershell -Command "Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath 'dist/release/NekoTime-Windows-v$env:RELEASE_VERSION.zip'"
+    powershell -Command "Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath 'dist/release/NekoTime-Windows-v$RELEASE_VERSION.zip'"
     ;;
 esac
