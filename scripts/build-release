@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+rm -rf dist/release && mkdir -p dist/release
+flutter pub get
+flutter test
+flutter config --enable-linux-desktop --enable-macos-desktop --enable-windows-desktop --no-analytics
+case "$RUNNER_OS" in
+  Linux)
+    sudo apt-get update
+    sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libayatana-appindicator3-dev
+    flutter build linux --release
+    pkg="NekoTime-Linux-x64-v$RELEASE_VERSION"
+    mkdir -p "dist/release/$pkg"
+    cp -R build/linux/x64/release/bundle/* "dist/release/$pkg/"
+    tar -C dist/release -czf "dist/release/$pkg.tar.gz" "$pkg"
+    rm -rf "dist/release/$pkg"
+    ;;
+  macOS)
+    flutter build macos --release
+    ditto -c -k --keepParent "build/macos/Build/Products/Release/neko_time.app" "dist/release/NekoTime-macOS-v$RELEASE_VERSION.zip"
+    brew install create-dmg
+    create-dmg --volname NekoTime --window-pos 200 120 --window-size 600 400 --icon-size 100 --app-drop-link 425 190 --no-internet-enable "dist/release/NekoTime-macOS-v$RELEASE_VERSION.dmg" "build/macos/Build/Products/Release/neko_time.app"
+    ;;
+  Windows)
+    flutter build windows --release
+    powershell -Command "Compress-Archive -Path build/windows/x64/runner/Release/* -DestinationPath 'dist/release/NekoTime-Windows-v$env:RELEASE_VERSION.zip'"
+    ;;
+esac

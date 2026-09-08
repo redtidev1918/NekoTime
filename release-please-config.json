@@ -5,7 +5,8 @@
       "release-type": "dart",
       "package-name": "NekoTime",
       "include-v-in-tag": true,
-      "include-component-in-tag": false
+      "include-component-in-tag": false,
+      "skip-github-release": true
     }
   }
 }

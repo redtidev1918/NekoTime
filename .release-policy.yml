@@ -1,0 +1,44 @@
+{
+  "kind": "flutter",
+  "versioning": {
+    "mode": "release-please"
+  },
+  "build": {
+    "test": "flutter test",
+    "matrix": [
+      {
+        "runner": "ubuntu-latest",
+        "command": "scripts/build-release"
+      },
+      {
+        "runner": "macos-latest",
+        "command": "scripts/build-release"
+      },
+      {
+        "runner": "windows-2022",
+        "command": "scripts/build-release"
+      }
+    ]
+  },
+  "assets": {
+    "required": [
+      "NekoTime-Linux-x64-v*.tar.gz",
+      "NekoTime-macOS-v*.dmg",
+      "NekoTime-macOS-v*.zip",
+      "NekoTime-Windows-v*.zip"
+    ],
+    "optional": []
+  },
+  "registries": {
+    "github": {
+      "required": true
+    }
+  },
+  "retention": {
+    "stable": 1,
+    "prerelease": 1,
+    "failed_draft": 2
+  },
+  "checksums": true,
+  "sbom": false
+}
