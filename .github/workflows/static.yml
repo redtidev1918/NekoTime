@@ -1,0 +1,43 @@
+name: Deploy documentation to Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - ".github/pages/**"
+      - ".github/workflows/static.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prepare site
+        run: |
+          mkdir _site
+          cp -R .github/pages/. _site/
+          find . -maxdepth 1 -type f -name '*.md' -exec cp {} _site/ \;
+          cp -R docs _site/docs
+          cp -R themes tool _site/
+          if [ -f LICENSE ]; then cp LICENSE _site/; fi
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5

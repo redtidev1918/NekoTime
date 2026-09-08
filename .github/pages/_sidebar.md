@@ -1,0 +1,17 @@
+- 开始使用
+  - [文档首页](README.md)
+  - [下载](https://github.com/redtidev1918/NekoTime/releases/latest)
+  - [English](README.en.md)
+- 使用与定制
+  - [使用指南](README.md#-使用指南)
+  - [主题开发](themes/THEME_GUIDE.md)
+  - [应用配置](APP_CONFIG.md)
+- 构建与支持
+  - [构建指南](BUILD_GUIDE.md)
+  - [平台兼容性](COMPATIBILITY.md)
+  - [Linux 故障排查](docs/LINUX_TROUBLESHOOTING.md)
+- 项目
+  - [测试指南](TESTING.md)
+  - [贡献指南](CONTRIBUTING.md)
+  - [安全策略](SECURITY.md)
+  - [更新日志](CHANGELOG.md)
