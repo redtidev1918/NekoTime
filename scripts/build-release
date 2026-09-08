@@ -19,9 +19,9 @@ case "$RUNNER_OS" in
     ;;
   macOS)
     flutter build macos --release
-    ditto -c -k --keepParent "build/macos/Build/Products/Release/neko_time.app" "dist/release/NekoTime-macOS-v$RELEASE_VERSION.zip"
+    ditto -c -k --keepParent "build/macos/Build/Products/Release/NekoTime.app" "dist/release/NekoTime-macOS-v$RELEASE_VERSION.zip"
     brew install create-dmg
-    create-dmg --volname NekoTime --window-pos 200 120 --window-size 600 400 --icon-size 100 --app-drop-link 425 190 --no-internet-enable "dist/release/NekoTime-macOS-v$RELEASE_VERSION.dmg" "build/macos/Build/Products/Release/neko_time.app"
+    create-dmg --volname NekoTime --window-pos 200 120 --window-size 600 400 --icon-size 100 --app-drop-link 425 190 --no-internet-enable "dist/release/NekoTime-macOS-v$RELEASE_VERSION.dmg" "build/macos/Build/Products/Release/NekoTime.app"
     ;;
   Windows)
     flutter build windows --release
