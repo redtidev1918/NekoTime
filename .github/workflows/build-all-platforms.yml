@@ -496,20 +496,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Keep only the latest release
+      - name: Keep only the latest release object
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh api --paginate \
-            "repos/${GITHUB_REPOSITORY}/releases?per_page=100" \
-            --jq '.[].tag_name' |
+          gh api --paginate             "repos/${GITHUB_REPOSITORY}/releases?per_page=100"             --jq '.[].tag_name' |
           while IFS= read -r release_tag; do
             if [ "$release_tag" = "$RELEASE_TAG" ]; then
               continue
             fi
-            echo "Deleting old GitHub release: $release_tag"
-            gh release delete "$release_tag" \
-              --repo "$GITHUB_REPOSITORY" \
-              --yes --cleanup-tag
+            echo "Deleting old GitHub release object (tag retained): $release_tag"
+            gh release delete "$release_tag"               --repo "$GITHUB_REPOSITORY"               --yes
           done
