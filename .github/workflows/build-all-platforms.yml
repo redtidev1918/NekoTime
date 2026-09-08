@@ -107,6 +107,12 @@ jobs:
           flutter build macos --release --split-debug-info=build/debug-info --obfuscate -v
       
       - name: Create DMG
+        if: >-
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && (
+            (github.ref == 'refs/heads/main' && needs.release-please.outputs.releases_created == 'true') ||
+            startsWith(github.ref, 'refs/tags/v')
+          ))
         run: |
           brew install create-dmg
           mkdir -p dist
@@ -124,18 +130,35 @@ jobs:
             "build/macos/Build/Products/Release/${{ env.APP_NAME }}.app" || true
       
       - name: Create ZIP (fallback)
-        if: always()
+        if: >-
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && (
+            (github.ref == 'refs/heads/main' && needs.release-please.outputs.releases_created == 'true') ||
+            startsWith(github.ref, 'refs/tags/v')
+          ))
         run: |
           mkdir -p dist
           cd build/macos/Build/Products/Release
           zip -r -q "../../../../../dist/${{ env.APP_NAME }}-macOS-v${{ env.APP_VERSION }}.zip" ${{ env.APP_NAME }}.app
       
       - name: Calculate checksums
+        if: >-
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && (
+            (github.ref == 'refs/heads/main' && needs.release-please.outputs.releases_created == 'true') ||
+            startsWith(github.ref, 'refs/tags/v')
+          ))
         run: |
           cd dist
           shasum -a 256 *.dmg *.zip > SHA256SUMS-macOS.txt || true
       
       - name: Upload macOS artifacts
+        if: >-
+          github.event_name == 'workflow_dispatch' ||
+          (github.event_name == 'push' && (
+            (github.ref == 'refs/heads/main' && needs.release-please.outputs.releases_created == 'true') ||
+            startsWith(github.ref, 'refs/tags/v')
+          ))
         uses: actions/upload-artifact@v4
         with:
           name: macos-build
