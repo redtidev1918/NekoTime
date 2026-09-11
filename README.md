@@ -1,5 +1,7 @@
 # NekoTime - 猫铃时钟
 
+**语言 / Language:** 中文 · [English](README.en.md)
+
 > 一个简单、可爱的桌面悬浮时钟
 
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
@@ -170,7 +172,7 @@ flutter build macos --release
 - **Windows**: `build/windows/x64/runner/Release/`
 - **Linux**: `build/linux/x64/release/bundle/`
 
-📘 **跨平台支持详情**：查看 [COMPATIBILITY.md](COMPATIBILITY.md) 了解各平台的详细构建和部署说明。
+📘 **跨平台支持详情**：查看 [COMPATIBILITY.md](docs/COMPATIBILITY.md) 了解各平台的详细构建和部署说明。
 
 ## 📖 使用指南
 
@@ -374,7 +376,7 @@ make test-coverage
 
 ### 详细文档
 
-- 📘 [测试指南](TESTING.md) - 完整的测试文档和最佳实践
+- 📘 [测试指南](docs/TESTING.md) - 完整的测试文档和最佳实践
 - 🛠️ [工具脚本](tool/README.md) - 测试和构建脚本说明
 
 ## 🤝 贡献

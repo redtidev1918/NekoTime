@@ -1,5 +1,7 @@
 # NekoTime — Cute Cat Clock
 
+**Language / 语言:** [中文](README.md) · English
+
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
 [![Flutter](https://img.shields.io/badge/Flutter-3.27-02569B?logo=flutter)](https://flutter.dev)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -34,7 +36,7 @@ flutter run -d macos    # or -d windows / -d linux
 ```
 
 Platform setup, build output locations, and Linux runtime dependencies are in
-[BUILD_GUIDE.md](BUILD_GUIDE.md) and [COMPATIBILITY.md](COMPATIBILITY.md);
+[BUILD_GUIDE.md](docs/BUILD_GUIDE.md) and [COMPATIBILITY.md](docs/COMPATIBILITY.md);
 Linux troubleshooting is in
 [docs/LINUX_TROUBLESHOOTING.md](docs/LINUX_TROUBLESHOOTING.md).
 
@@ -60,7 +62,7 @@ plus digit images and optional assets. Full reference:
 ## Testing & contributing
 
 - `make test` runs the full suite (unit + widget + analyze + format)
-- See [CONTRIBUTING.md](CONTRIBUTING.md), [TESTING.md](TESTING.md), and
+- See [CONTRIBUTING.md](CONTRIBUTING.md), [TESTING.md](docs/TESTING.md), and
   [CHANGELOG.md](CHANGELOG.md)
 
 ## License
