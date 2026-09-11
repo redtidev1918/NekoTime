@@ -6,7 +6,7 @@
 
 - Flutter 3.27（与 CI 一致；`pubspec.yaml` 要求 Dart SDK >= 3.0）
 - 目标平台工具链：macOS（Xcode）、Windows（Visual Studio C++）、Linux（GTK3 依赖，见
-  [BUILD_GUIDE.md](BUILD_GUIDE.md)）
+  [BUILD_GUIDE.md](docs/BUILD_GUIDE.md)）
 
 ## 开发流程
 

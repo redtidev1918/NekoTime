@@ -216,8 +216,8 @@ flutter pub get
 
 ## 📚 更多信息
 
-- 详细测试说明: [TESTING.md](../TESTING.md)
-- 构建指南: [BUILD_GUIDE.md](../BUILD_GUIDE.md)
+- 详细测试说明: [TESTING.md](../docs/TESTING.md)
+- 构建指南: [BUILD_GUIDE.md](../docs/BUILD_GUIDE.md)
 - 项目文档: [README.md](../README.md)
 
 ---
