@@ -40,5 +40,30 @@
     "failed_draft": 2
   },
   "checksums": true,
-  "sbom": false
+  "sbom": false,
+  "repository": {
+    "git": {
+      "productionOperations": {
+        "base": "default",
+        "branches": [
+          "chore/cutover-*",
+          "ops/*",
+          "release/*",
+          "hotfix/*"
+        ],
+        "requireLatestBase": true,
+        "operations": {
+          "cutover": {
+            "branches": [
+              "chore/cutover-*"
+            ],
+            "allowedPaths": [
+              ".github/workflows/release.yml",
+              ".release-please-manifest.json"
+            ]
+          }
+        }
+      }
+    }
+  }
 }
