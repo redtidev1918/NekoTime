@@ -31,3 +31,5 @@ jobs:
       repair: ${{ github.event_name == 'pull_request' || inputs.repair || false }}
       stage: ${{ inputs.stage || 'all' }}
     secrets: inherit
+
+# Branch-contract probe (positive): comment-only change inside the declared cutover scope.
