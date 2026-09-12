@@ -3,24 +3,24 @@
 **Language / 语言:** [中文](README.md) · English
 
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
-[![Flutter](https://img.shields.io/badge/Flutter-3.27-02569B?logo=flutter)](https://flutter.dev)
+[![Flutter](https://img.shields.io/badge/Flutter-3.32-02569B?logo=flutter)](https://flutter.dev)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-A cute, lightweight desktop floating clock with customizable GIF themes for
-**macOS, Windows, and Linux**. The theme system works like game mods — drop a
-theme folder in, reload, and your clock looks completely different.
+A lightweight desktop floating clock with customizable GIF themes for macOS,
+Windows, and Linux. The theme system works like game mods: drop a theme folder
+in, reload, and the clock looks completely different.
 
-> **Note**: desktop only — no Android/iOS support.
+Desktop only — no Android/iOS support.
 
 ## Features
 
-- **Themes**: JSON-configurable, no coding required; GIF animations, custom
-  images, fonts, and backgrounds; instant reload; several built-in themes
-- **Window**: fully transparent / frosted-glass blur, always-on-top or
-  desktop-embedded layers, free dragging, position lock, adjustable opacity,
+- Themes: JSON-configurable, no coding required; GIF animations, custom images,
+  fonts, and backgrounds; instant reload; several built-in themes
+- Window: fully transparent or frosted-glass blur, always-on-top or
+  desktop-embedded, free dragging, position lock, adjustable opacity,
   double-click to hide
-- **Performance**: lightweight, smooth animations, automatic resource caching
-- **Language**: Simplified Chinese and English, auto-detected
+- Performance: low resource usage, smooth animations, automatic resource caching
+- Language: Simplified Chinese and English, auto-detected
 
 ## Quick start
 
@@ -68,7 +68,3 @@ plus digit images and optional assets. Full reference:
 ## License
 
 [MIT](LICENSE)
-
----
-
-<p align="center"><strong>NekoTime — make time cuter 🐱⏰</strong></p>

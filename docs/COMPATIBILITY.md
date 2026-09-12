@@ -2,20 +2,20 @@
 
 本文档详细说明 NekoTime 在 macOS、Windows 和 Linux 平台上的兼容性和配置。
 
-## 📊 平台支持总览
+## 平台支持总览
 
 | 平台 | 透明效果 | 系统托盘 | 支持状态 |
 |------|----------|----------|----------|
-| **macOS** 10.14+ | ✅ 毛玻璃 | ✅ 完全支持 | 🌟🌟🌟 完美 |
-| **Windows** 10 1903+ | ✅ Acrylic | ✅ 完全支持 | 🌟🌟🌟 完美 |
-| **Windows** 11 | ✅ Acrylic 2.0 | ✅ 完全支持 | 🌟🌟🌟 最佳 |
-| **Linux** (GNOME/KDE) | ✅ 原生透明 | ✅ 完全支持 | 🌟🌟🌟 优秀 |
-| **Linux** (Xfce/MATE) | ⚠️ 需启用合成 | ✅ 完全支持 | 🌟🌟 良好 |
-| **Linux** (i3wm) | ⚠️ 需 picom | ⚠️ 需配置 | 🌟 基础 |
+| **macOS** 10.14+ | 支持 毛玻璃 | 完全支持 | 完美 |
+| **Windows** 10 1903+ | 支持 Acrylic | 完全支持 | 完美 |
+| **Windows** 11 | 支持 Acrylic 2.0 | 完全支持 | 最佳 |
+| **Linux** (GNOME/KDE) | 支持 原生透明 | 完全支持 | 优秀 |
+| **Linux** (Xfce/MATE) | 部分 需启用合成 | 完全支持 | 良好 |
+| **Linux** (i3wm) | 部分 需 picom | 部分 需配置 | 基础 |
 
 ---
 
-## 🍎 macOS
+## macOS
 
 ### 系统要求
 - macOS 10.14 (Mojave) 或更高版本
@@ -46,7 +46,7 @@ flutter build macos --release
 
 ---
 
-## 🪟 Windows
+## Windows
 
 ### 系统要求
 - **最低**：Windows 10 1809
@@ -57,11 +57,11 @@ flutter build macos --release
 
 | Windows 版本 | 透明效果 | Acrylic | 推荐度 |
 |--------------|----------|---------|--------|
-| Windows 11 | ✅ 完全 | ✅ Acrylic 2.0 | 🌟🌟🌟 |
-| Windows 10 21H2 | ✅ 完全 | ✅ 完全 | 🌟🌟🌟 |
-| Windows 10 1903 | ✅ 完全 | ✅ Acrylic 1.0 | 🌟🌟 |
-| Windows 10 1809 | ✅ 完全 | ⚠️ 部分 | 🌟 |
-| Windows 8.1 | ⚠️ 部分 | ❌ 无 | ❌ |
+| Windows 11 | 完全 | 支持 Acrylic 2.0 | 高 |
+| Windows 10 21H2 | 完全 | 完全 | 高 |
+| Windows 10 1903 | 完全 | 支持 Acrylic 1.0 | 中 |
+| Windows 10 1809 | 完全 | 部分 | 低 |
+| Windows 8.1 | 部分 | 无 | 不支持 |
 
 ### 透明效果
 使用 `flutter_acrylic` 实现原生 Acrylic 效果：
@@ -107,7 +107,7 @@ flutter build windows --release
 
 ---
 
-## 🐧 Linux
+## Linux
 
 ### 系统要求
 - Linux 内核 5.0+
@@ -142,13 +142,13 @@ sudo pacman -S base-devel gtk3 cmake ninja
 
 | 桌面环境 | 透明效果 | 托盘支持 | 推荐度 |
 |----------|----------|----------|--------|
-| **GNOME** 40+ | ✅ 完全 | ✅ 需扩展* | 🌟🌟🌟 |
-| **KDE Plasma** 5.20+ | ✅ 完全 | ✅ 完全 | 🌟🌟🌟 |
-| **Cinnamon** 5.0+ | ✅ 完全 | ✅ 完全 | 🌟🌟🌟 |
-| **Xfce** 4.16+ | ⚠️ 需启用合成 | ✅ 完全 | 🌟🌟 |
-| **MATE** 1.24+ | ⚠️ 需启用合成 | ✅ 完全 | 🌟🌟 |
-| **i3wm** | ⚠️ 需 picom | ⚠️ 需配置 | 🌟 |
-| **Sway** (Wayland) | ✅ 完全 | ⚠️ 部分 | 🌟🌟 |
+| **GNOME** 40+ | 完全 | 支持 需扩展* | 高 |
+| **KDE Plasma** 5.20+ | 完全 | 完全 | 高 |
+| **Cinnamon** 5.0+ | 完全 | 完全 | 高 |
+| **Xfce** 4.16+ | 部分 需启用合成 | 完全 | 中 |
+| **MATE** 1.24+ | 部分 需启用合成 | 完全 | 中 |
+| **i3wm** | 部分 需 picom | 部分 需配置 | 低 |
+| **Sway** (Wayland) | 完全 | 部分 | 中 |
 
 *GNOME 需要 AppIndicator 扩展
 
@@ -223,7 +223,7 @@ sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1
 
 ---
 
-## 🎨 系统托盘详细说明
+## 系统托盘详细说明
 
 ### 托盘实现
 使用 `system_tray` v2.0.3，支持所有桌面平台。
@@ -234,14 +234,14 @@ sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1
 - 所有平台统一显示
 
 ### 托盘菜单功能
-- ✅ 主题切换
-- ✅ 透明度调节（30% - 100%）
-- ✅ 缩放调节（0.75x - 2.0x）
-- ✅ 位置锁定/解锁
-- ✅ 显示/隐藏窗口
-- ✅ 窗口层级切换
-- ✅ 语言切换
-- ✅ 退出应用
+- 主题切换
+- 透明度调节（30% - 100%）
+- 缩放调节（0.75x - 2.0x）
+- 位置锁定/解锁
+- 显示/隐藏窗口
+- 窗口层级切换
+- 语言切换
+- 退出应用
 
 ### 平台特性
 
@@ -254,7 +254,7 @@ sudo apt-get install libayatana-appindicator3-1 gir1.2-ayatanaappindicator3-0.1
 
 ---
 
-## 🔧 构建指南
+## 构建指南
 
 ### macOS
 ```bash
@@ -294,7 +294,7 @@ build/linux/x64/release/bundle/neko_time
 
 ---
 
-## 📦 主题目录位置
+## 主题目录位置
 
 **建议从设置对话框底部复制完整路径。**
 
@@ -305,11 +305,11 @@ build/linux/x64/release/bundle/neko_time
 | Windows | `%APPDATA%\com.nekotime.app\themes\` |
 | Linux | `~/.local/share/com.nekotime.app/themes/` |
 
-> **注意**：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式。
+注意：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式。
 
 ---
 
-## ⚡ 性能基准
+## 性能基准
 
 ### 内存使用
 - **基础**：~80-100MB
@@ -328,7 +328,7 @@ build/linux/x64/release/bundle/neko_time
 
 ---
 
-## 🎯 推荐配置
+## 推荐配置
 
 ### 最佳体验
 - **macOS**: macOS 11+ (Big Sur)
@@ -342,14 +342,9 @@ build/linux/x64/release/bundle/neko_time
 
 ---
 
-## 📚 相关文档
+## 相关文档
 
-- [README.md](README.md) - 项目概述和快速开始
-- [CHANGELOG.md](CHANGELOG.md) - 版本更新历史
+- [README.md](/README.md) - 项目概述和快速开始
+- [CHANGELOG.md](/CHANGELOG.md) - 版本更新历史
 - [BUILD_GUIDE.md](BUILD_GUIDE.md) - 详细构建指南
-- [themes/THEME_GUIDE.md](themes/THEME_GUIDE.md) - 主题开发指南
-
----
-
-**最后更新**: 2025-11-18  
-**适用版本**: v2.1.0+
+- [themes/THEME_GUIDE.md](/themes/THEME_GUIDE.md) - 主题开发指南

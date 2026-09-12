@@ -2,27 +2,30 @@
 
 本文档详细说明如何在各个平台上构建和打包 NekoTime。
 
-## 📋 目录
+## 目录
 
-- [快速开始](#-快速开始)
-- [macOS 构建](#-macos-构建)
-- [Windows 构建](#-windows-构建)
-- [Linux 构建](#-linux-构建)
-- [自动化脚本](#-自动化脚本)
-- [故障排除](#-故障排除)
+- [快速开始](#快速开始)
+- [macOS 构建](#macos-构建)
+- [Windows 构建](#windows-构建)
+- [Linux 构建](#linux-构建)
+- [自动化脚本](#自动化脚本)
+- [发布流程](#发布流程)
+- [故障排除](#故障排除)
+- [构建时间参考](#构建时间参考)
+- [最佳实践](#最佳实践)
 
-## 🚀 快速开始
+## 快速开始
 
 ### 前置要求
 
 **所有平台**：
-- Flutter SDK 3.0 或更高版本
+- Flutter 3.32（CI 使用 3.32.8，Dart SDK `>=3.8.0`，见 `pubspec.yaml`）
 - Git
 
 **平台特定**：
 - **macOS**: Xcode 12.0+, CocoaPods
 - **Windows**: Visual Studio 2019+（C++ 桌面开发）
-- **Linux**: 构建工具链（见 [Linux 构建](#-linux-构建)）
+- **Linux**: 构建工具链（见 [Linux 构建](#linux-构建)）
 
 ### 克隆项目
 
@@ -32,7 +35,7 @@ cd NekoTime
 flutter pub get
 ```
 
-## 🍎 macOS 构建
+## macOS 构建
 
 ### 方法 1：使用自动化脚本（推荐）
 
@@ -44,7 +47,7 @@ chmod +x scripts/build_all.sh
 ./scripts/build_all.sh macos
 ```
 
-输出文件：`dist/NekoTime-macOS-v2.1.0.zip`
+输出文件：`dist/NekoTime-macOS-v2.3.4.zip`
 
 ### 方法 2：手动构建
 
@@ -77,7 +80,7 @@ create-dmg \
   --icon "NekoTime.app" 175 120 \
   --hide-extension "NekoTime.app" \
   --app-drop-link 425 120 \
-  "NekoTime-macOS-v2.1.0.dmg" \
+  "NekoTime-macOS-v2.3.4.dmg" \
   "build/macos/Build/Products/Release/NekoTime.app"
 ```
 
@@ -90,13 +93,13 @@ codesign --deep --force --verify --verbose \
   build/macos/Build/Products/Release/NekoTime.app
 
 # 公证（需要 Apple 开发者账号）
-xcrun notarytool submit NekoTime-macOS-v2.1.0.dmg \
+xcrun notarytool submit NekoTime-macOS-v2.3.4.dmg \
   --apple-id "your@email.com" \
   --team-id "TEAM_ID" \
   --password "app-specific-password"
 ```
 
-## 🪟 Windows 构建
+## Windows 构建
 
 ### 方法 1：使用批处理脚本（推荐）
 
@@ -105,7 +108,7 @@ REM 在 Windows 命令提示符或 PowerShell 中运行
 scripts\build_windows.bat
 ```
 
-输出文件：`dist\NekoTime-Windows-v2.1.0.zip`
+输出文件：`dist\NekoTime-Windows-v2.3.4.zip`
 
 ### 方法 2：手动构建
 
@@ -136,7 +139,7 @@ AppVersion=2.1.0
 DefaultDirName={pf}\NekoTime
 DefaultGroupName=NekoTime
 OutputDir=dist
-OutputBaseFilename=NekoTime-Setup-v2.1.0
+OutputBaseFilename=NekoTime-Setup-v2.3.4
 Compression=lzma2
 SolidCompression=yes
 
@@ -178,7 +181,7 @@ signtool sign /f YourCertificate.pfx /p YourPassword ^
   build\windows\x64\runner\Release\NekoTime.exe
 ```
 
-## 🐧 Linux 构建
+## Linux 构建
 
 ### 方法 1：使用Shell脚本（推荐）
 
@@ -190,7 +193,7 @@ chmod +x scripts/build_linux.sh
 ./scripts/build_linux.sh
 ```
 
-输出文件：`dist/NekoTime-Linux-x64-v2.1.0.tar.gz`
+输出文件：`dist/NekoTime-Linux-x64-v2.3.4.tar.gz`
 
 ### 方法 2：手动构建
 
@@ -296,7 +299,7 @@ EOF
 dpkg-deb --build nekotime_2.1.0-1_amd64
 ```
 
-## 🤖 自动化脚本
+## 自动化脚本
 
 ### 脚本说明
 
@@ -337,55 +340,54 @@ scripts\build_windows.bat
 ### 脚本功能
 
 所有脚本都会：
-1. ✅ 清理旧构建
-2. ✅ 安装依赖
-3. ✅ 构建 Release 版本
-4. ✅ 创建压缩包
-5. ✅ 生成 README 文件
-6. ✅ 显示构建信息
+1. 清理旧构建
+2. 安装依赖
+3. 构建 Release 版本
+4. 创建压缩包
+5. 生成 README 文件
+6. 显示构建信息
 
-## 📦 发布检查清单
+## 发布流程
 
-在发布新版本前，请确保完成以下检查：
+版本号、`CHANGELOG.md`、Git tag 与 Release 由 release-please 自动生成，无需手动修改。配置见 `release-please-config.json` 与 `.release-please-manifest.json`。
+
+1. 以 Conventional Commits 提交并合并到 `main`；
+2. release-please 打开发版 PR，合并后自动打 `v*` 标签并创建 Release；
+3. `.github/workflows/release.yml`（转调 releasegraph 可复用工作流）按 `.release-policy.yml` 在 ubuntu / macOS / windows 三个 runner 上构建三平台产物，校验必需产物（dmg / zip / tar.gz）并生成 `SHA256SUMS`，创建 GitHub Release 后按保留策略清理旧 Release；
+4. 需要重跑或修复时，用 `.github/workflows/release.yml` 的 `workflow_dispatch` 传入 `version` / `repair` / `force`，不要手工打标签或建 Release，以免破坏发布编排的 exactly-once 语义。
+
+发布前需要人工确认的是构建产物质量：
 
 ### 代码检查
 
-- [ ] 运行 `flutter analyze` 无错误
-- [ ] 运行 `flutter test` 所有测试通过
-- [ ] 更新 `pubspec.yaml` 中的版本号
-- [ ] 更新 `CHANGELOG.md`
+- [ ] `flutter analyze` 无错误
+- [ ] `flutter test` 全部通过
+- [ ] `make pre-release` 通过
 
 ### 构建测试
 
 - [ ] macOS 构建成功
 - [ ] Windows 构建成功
 - [ ] Linux 构建成功
-- [ ] 所有平台功能测试通过
-
-### 文档更新
-
-- [ ] 更新 README.md 版本信息
-- [ ] 更新 CHANGELOG.md 添加新版本
-- [ ] 检查所有文档链接有效
+- [ ] 三平台功能测试通过
 
 ### 打包验证
 
-- [ ] macOS .app 可正常运行
-- [ ] Windows .exe 可正常运行
+- [ ] macOS `.app` / DMG 可正常运行
+- [ ] Windows `.exe` 可正常运行
 - [ ] Linux 可执行文件正常运行
-- [ ] 所有依赖已正确打包
+- [ ] 依赖已完整打包
 - [ ] 主题文件夹路径正确
 - [ ] 配置持久化正常
 
-### 发布准备
+### 发版后核对
 
-- [ ] 创建 Git tag
-- [ ] 准备 Release Notes
-- [ ] 上传所有平台安装包
-- [ ] 病毒扫描（VirusTotal）
+- [ ] Release 附件齐全（DMG、ZIP、TAR.GZ）
+- [ ] `SHA256SUMS.txt` 与附件一致
+- [ ] 旧 Release 已清理
 - [ ] 签名验证（如适用）
 
-## 🔧 故障排除
+## 故障排除
 
 ### macOS
 
@@ -472,7 +474,7 @@ rm pubspec.lock
 flutter pub get
 ```
 
-## 📊 构建时间参考
+## 构建时间参考
 
 | 平台 | 首次构建 | 增量构建 | 清理构建 |
 |------|----------|----------|----------|
@@ -482,24 +484,19 @@ flutter pub get
 
 *时间取决于硬件配置和网络速度*
 
-## 🎯 最佳实践
+## 最佳实践
 
 1. **使用 Release 构建**：发布时始终使用 `--release` 标志
 2. **清理构建**：重大更改后执行 `flutter clean`
 3. **依赖管理**：定期运行 `flutter pub upgrade` 更新依赖
-4. **版本控制**：使用 Git tags 标记发布版本
+4. **版本控制**：版本与 tag 由 release-please 生成，不要手动改版本号或打 tag
 5. **自动化**：使用提供的脚本自动化构建流程
 6. **测试**：在目标平台上实际测试构建产物
 
-## 📚 相关文档
+## 相关文档
 
-- [README.md](README.md) - 项目概述
+- [README.md](/README.md) - 项目概述
 - [COMPATIBILITY.md](COMPATIBILITY.md) - 各平台兼容性说明
-- [docs/LINUX_TROUBLESHOOTING.md](docs/LINUX_TROUBLESHOOTING.md) - Linux 常见问题排查
+- [LINUX_TROUBLESHOOTING.md](/docs/LINUX_TROUBLESHOOTING.md) - Linux 常见问题排查
 - [APP_CONFIG.md](APP_CONFIG.md) - 应用配置说明
-- [CHANGELOG.md](CHANGELOG.md) - 更新日志
-
----
-
-**最后更新**: 2025-11-18  
-**适用版本**: v2.1.0+
+- [CHANGELOG.md](/CHANGELOG.md) - 更新日志

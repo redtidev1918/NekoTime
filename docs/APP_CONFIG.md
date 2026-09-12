@@ -1,6 +1,6 @@
 # NekoTime 应用配置说明
 
-## 📋 应用名称说明
+## 应用名称说明
 
 ### 包名 vs 显示名称
 
@@ -37,7 +37,7 @@
 
 ---
 
-## 🎨 应用图标配置
+## 应用图标配置
 
 ### 主图标文件
 
@@ -72,7 +72,7 @@
 
 ---
 
-## 🛠️ 构建脚本说明
+## 构建脚本说明
 
 ### 主构建脚本
 
@@ -94,27 +94,27 @@
 
 ---
 
-## 📦 输出文件命名
+## 输出文件命名
 
 ### macOS
-- **DMG**: `NekoTime-v2.1.0.dmg` ✅
-- **ZIP**: `NekoTime-macOS-v2.1.0.zip` ✅
+- **DMG**: `NekoTime-v2.3.4.dmg`
+- **ZIP**: `NekoTime-macOS-v2.3.4.zip`
 - **应用**: `NekoTime.app`
 - **用户看到**: `NekoTime`
 
-### Windows  
-- **ZIP**: `NekoTime-Windows-v2.1.0.zip` ✅
+### Windows
+- **ZIP**: `NekoTime-Windows-v2.3.4.zip`
 - **EXE**: `NekoTime.exe`
-- **安装包**: `NekoTime-Setup-v2.1.0.exe`（如果创建）
+- **安装包**: `NekoTime-Setup-v2.3.4.exe`（如果创建）
 
 ### Linux
-- **TAR.GZ**: `NekoTime-Linux-x64-v2.1.0.tar.gz` ✅
+- **TAR.GZ**: `NekoTime-Linux-x64-v2.3.4.tar.gz`
 - **可执行文件**: `neko_time`
 - **AppImage**: `NekoTime-x86_64.AppImage`（如果创建）
 
 ---
 
-## ⚙️ 修改应用显示名称
+## 修改应用显示名称
 
 ### macOS
 
@@ -143,7 +143,7 @@ Type=Application
 
 ---
 
-## 🔧 常见问题
+## 常见问题
 
 ### Q: 为什么 macOS 文件名是 NekoTime.app 而包名是 neko_time？
 
@@ -179,18 +179,14 @@ Type=Application
 
 ---
 
-## 📝 版本更新检查清单
+## 版本更新检查清单
 
-发布新版本时：
-- [ ] 更新 `pubspec.yaml` 中的版本号
-- [ ] 更新 `CHANGELOG.md`
+版本号与 `CHANGELOG.md` 由 release-please 通过发版 PR 更新，无需手动改动。发布新版本时人工负责：
+
 - [ ] 确认各平台显示名称为 `NekoTime`
-- [ ] 从 `source.png` 生成图标
+- [ ] 从 `source.png` 重新生成图标
 - [ ] 构建所有平台
 - [ ] 测试安装包
-- [ ] 生成 SHA256 校验和
+- [ ] 核对 Release 中的 SHA256 校验和
 
----
-
-**最后更新**: 2025-11-18  
-**适用版本**: v2.1.0+
+发版流程细节见 [BUILD_GUIDE.md](BUILD_GUIDE.md#发布流程)。

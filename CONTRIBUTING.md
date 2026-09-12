@@ -4,7 +4,7 @@
 
 ## 开发环境
 
-- Flutter 3.27（与 CI 一致；`pubspec.yaml` 要求 Dart SDK >= 3.0）
+- Flutter 3.32（CI 使用 3.32.8；`pubspec.yaml` 要求 Dart SDK `>=3.8.0`）
 - 目标平台工具链：macOS（Xcode）、Windows（Visual Studio C++）、Linux（GTK3 依赖，见
   [BUILD_GUIDE.md](docs/BUILD_GUIDE.md)）
 
@@ -30,6 +30,6 @@
 
 ## 发布
 
-- 版本号在 `pubspec.yaml`，遵循语义化版本；
-- 每个版本更新 [CHANGELOG.md](CHANGELOG.md)；
-- 打 `v*` 标签触发 CI 三平台构建与 Release（见 `.github/workflows/build-all-platforms.yml`）。
+- 版本号、[CHANGELOG.md](CHANGELOG.md) 与 Git tag 由 release-please 通过发版 PR 自动生成，不要手动修改版本号或打 tag；
+- 合并发版 PR 后，`.github/workflows/release.yml`（名称 Release）转调 releasegraph 的可复用工作流，按 `.release-policy.yml` 在 ubuntu / macOS / windows 三个 runner 上构建三平台产物、生成 `SHA256SUMS` 并创建 GitHub Release；
+- 发版前在本地运行 `make pre-release` 并通过三平台验证。流程细节见 [docs/BUILD_GUIDE.md](docs/BUILD_GUIDE.md#发布流程)。

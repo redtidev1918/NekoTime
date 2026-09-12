@@ -1,6 +1,6 @@
 # Linux 故障排除指南
 
-## 🐧 常见问题与解决方案
+## 常见问题与解决方案
 
 ### 问题 1: 时钟周围有巨大黑色边框
 
@@ -185,7 +185,7 @@ sudo ./scripts/install_linux_deps.sh
 
 ---
 
-## 🔍 调试信息收集
+## 调试信息收集
 
 如果问题仍然存在，请收集以下信息提交 Issue:
 
@@ -213,27 +213,27 @@ xprop | grep -E "WM_CLASS|WM_NAME|_NET_WM"
 
 ---
 
-## 📚 推荐配置
+## 推荐配置
 
 ### 最佳兼容性配置
 
 | 桌面环境 | 合成器 | 托盘支持 | 推荐度 |
 |---------|--------|---------|--------|
-| GNOME (X11) | Mutter | AppIndicator 扩展 | ⭐⭐⭐⭐⭐ |
-| KDE Plasma | KWin | 内置 | ⭐⭐⭐⭐⭐ |
-| Cinnamon | Muffin | 内置 | ⭐⭐⭐⭐⭐ |
-| Xfce | xfwm4 | 内置 | ⭐⭐⭐⭐ |
-| MATE | Marco | 内置 | ⭐⭐⭐⭐ |
-| i3 + Picom | Picom | 需要 stalonetray | ⭐⭐⭐ |
+| GNOME (X11) | Mutter | AppIndicator 扩展 | 优秀 |
+| KDE Plasma | KWin | 内置 | 优秀 |
+| Cinnamon | Muffin | 内置 | 优秀 |
+| Xfce | xfwm4 | 内置 | 良好 |
+| MATE | Marco | 内置 | 良好 |
+| i3 + Picom | Picom | 需要 stalonetray | 一般 |
 
 ### 避免的配置
-- ❌ GNOME Wayland（托盘支持有限）
-- ❌ 无合成器的轻量级 WM
-- ❌ 远程桌面（透明度不支持）
+- GNOME Wayland（托盘支持有限）
+- 无合成器的轻量级 WM
+- 远程桌面（透明度不支持）
 
 ---
 
-## 🆘 仍然无法解决？
+## 仍然无法解决？
 
 1. 查看日志文件: `~/.local/share/NekoTime/logs/`
 2. 提交 Issue: https://github.com/redtidev1918/NekoTime/issues

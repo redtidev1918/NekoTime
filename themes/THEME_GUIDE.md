@@ -46,10 +46,10 @@ my_theme/
 
 | 字段 | 类型 | 必需 | 说明 |
 |------|------|------|------|
-| `id` | String | ✅ | 主题唯一标识符，建议与文件夹名一致 |
-| `name` | String | ✅ | 显示名称 |
-| `version` | String | ❌ | 主题版本号（语义化版本） |
-| `apiVersion` | Number | ❌ | API 版本，当前为 1 |
+| `id` | String | 是 | 主题唯一标识符，建议与文件夹名一致 |
+| `name` | String | 是 | 显示名称 |
+| `version` | String | 否 | 主题版本号（语义化版本） |
+| `apiVersion` | Number | 否 | API 版本，当前为 1 |
 
 ---
 
@@ -191,9 +191,9 @@ my_theme/
 
 | 字段 | 类型 | 必需 | 说明 |
 |------|------|------|------|
-| `digit.spacing` | Number | ❌ | 数字间距（像素），默认 0 |
-| `digit.gifPath` | String | ❌ | 数字图片文件夹路径（相对主题根目录） |
-| `digit.format` | String | ❌ | 图片格式，留空自动检测 |
+| `digit.spacing` | Number | 否 | 数字间距（像素），默认 0 |
+| `digit.gifPath` | String | 否 | 数字图片文件夹路径（相对主题根目录） |
+| `digit.format` | String | 否 | 图片格式，留空自动检测 |
 
 ### 支持的图片格式
 
@@ -435,7 +435,7 @@ my_theme/
 | **Windows** | `%APPDATA%\com.nekotime.app\themes\` |
 | **Linux** | `~/.local/share/com.nekotime.app/themes/` |
 
-> **注意**：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式，路径较长。建议直接从设置对话框复制路径。
+注意：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式，路径较长。建议直接从设置对话框复制路径。
 
 ### 快速打开主题目录 (macOS)
 
@@ -502,32 +502,27 @@ https://jsonlint.com
 
 | 字段 | 类型 | 必需 | 默认值 | 说明 |
 |------|------|------|--------|------|
-| `id` | String | ✅ | - | 主题 ID |
-| `name` | String | ✅ | - | 显示名称 |
-| `version` | String | ❌ | - | 版本号 |
-| `apiVersion` | Number | ❌ | 1 | API 版本 |
-| `kind` | String | ❌ | `transparent` | 主题类型 |
-| `borderRadius` | Number | ❌ | 0 | 圆角半径 |
-| `padding.preset` | String | ❌ | `cozy` | 内边距预设 |
-| `padding.horizontal` | Number | ❌ | - | 水平内边距 |
-| `padding.vertical` | Number | ❌ | - | 垂直内边距 |
-| `layout.alignment` | String | ❌ | `center` | 对齐方式 |
-| `backgroundColor` | String | ❌ | `null` | 背景颜色 |
-| `backgroundOpacityMultiplier` | Number | ❌ | 0.0 | 背景不透明度 |
-| `tintColor` | String | ❌ | `null` | 着色颜色 |
-| `tintOpacityMultiplier` | Number | ❌ | 0.0 | 着色不透明度 |
-| `blur.sigmaX` | Number | ❌ | 0 | 水平模糊 |
-| `blur.sigmaY` | Number | ❌ | 0 | 垂直模糊 |
-| `backgroundImage` | String | ❌ | `null` | 背景图路径 |
-| `overlayImage` | String | ❌ | `null` | 叠加图路径 |
-| `overlayOpacityMultiplier` | Number | ❌ | 1.0 | 叠加不透明度 |
-| `fontFamily` | String | ❌ | `null` | 字体族名 |
-| `fonts` | Array | ❌ | `[]` | 字体文件路径 |
-| `digit.spacing` | Number | ❌ | 0 | 数字间距 |
-| `digit.gifPath` | String | ❌ | `null` | 数字图片路径 |
-| `digit.format` | String | ❌ | `null` | 图片格式 |
-
----
-
-**最后更新**: 2025-12-09  
-**文档版本**: 2.1
+| `id` | String | 是 | - | 主题 ID |
+| `name` | String | 是 | - | 显示名称 |
+| `version` | String | 否 | - | 版本号 |
+| `apiVersion` | Number | 否 | 1 | API 版本 |
+| `kind` | String | 否 | `transparent` | 主题类型 |
+| `borderRadius` | Number | 否 | 0 | 圆角半径 |
+| `padding.preset` | String | 否 | `cozy` | 内边距预设 |
+| `padding.horizontal` | Number | 否 | - | 水平内边距 |
+| `padding.vertical` | Number | 否 | - | 垂直内边距 |
+| `layout.alignment` | String | 否 | `center` | 对齐方式 |
+| `backgroundColor` | String | 否 | `null` | 背景颜色 |
+| `backgroundOpacityMultiplier` | Number | 否 | 0.0 | 背景不透明度 |
+| `tintColor` | String | 否 | `null` | 着色颜色 |
+| `tintOpacityMultiplier` | Number | 否 | 0.0 | 着色不透明度 |
+| `blur.sigmaX` | Number | 否 | 0 | 水平模糊 |
+| `blur.sigmaY` | Number | 否 | 0 | 垂直模糊 |
+| `backgroundImage` | String | 否 | `null` | 背景图路径 |
+| `overlayImage` | String | 否 | `null` | 叠加图路径 |
+| `overlayOpacityMultiplier` | Number | 否 | 1.0 | 叠加不透明度 |
+| `fontFamily` | String | 否 | `null` | 字体族名 |
+| `fonts` | Array | 否 | `[]` | 字体文件路径 |
+| `digit.spacing` | Number | 否 | 0 | 数字间距 |
+| `digit.gifPath` | String | 否 | `null` | 数字图片路径 |
+| `digit.format` | String | 否 | `null` | 图片格式 |

@@ -2,18 +2,18 @@
 
 这是一个功能完整的示例主题，展示了 NekoTime 主题系统的各种能力。
 
-## 🎨 功能展示
+## 功能展示
 
 本主题演示了以下功能：
-- ✅ Solid 纯色/图片背景模式
-- ✅ 自定义背景图片
-- ✅ 前景叠加层（Overlay）
-- ✅ 自定义字体
-- ✅ 数字间距配置
-- ✅ 布局对齐
-- ✅ 内边距预设
+- Solid 纯色/图片背景模式
+- 自定义背景图片
+- 前景叠加层（Overlay）
+- 自定义字体
+- 数字间距配置
+- 布局对齐
+- 内边距预设
 
-## 📂 目录结构
+## 目录结构
 
 ```
 example_mod/
@@ -29,7 +29,7 @@ example_mod/
     └── ExampleFont.ttf     # 自定义字体
 ```
 
-## 🚀 使用方法
+## 使用方法
 
 ### 1. 定位主题目录
 
@@ -65,7 +65,7 @@ cp -r example_mod ~/Library/Containers/com.nekotime.app/Data/Library/Application
 2. 点击 **"Reload Themes"**
 3. 选择 **"Example Mod Theme"**
 
-## ⚙️ 配置说明
+## 配置说明
 
 ### 主题配置文件
 
@@ -118,7 +118,7 @@ cp -r example_mod ~/Library/Containers/com.nekotime.app/Data/Library/Application
 | `digit.gifPath` | 数字图片路径 | `digits` |
 | `digit.format` | 图片格式 | `gif` |
 
-## 🎨 自定义主题
+## 自定义主题
 
 ### 复制并修改
 
@@ -163,19 +163,19 @@ cp -r example_mod ~/Library/Containers/com.nekotime.app/Data/Library/Application
 }
 ```
 
-## 📖 更多资源
+## 更多资源
 
 - **[主题开发指南](../THEME_GUIDE.md)** - 完整的开发文档
 - **[主题目录说明](../README.md)** - 目录结构和使用说明
 
-## 💡 提示
+## 提示
 
 1. **资源可选**：如果不需要背景图、叠加图或字体，可以删除相关字段
 2. **路径相对**：所有资源路径都相对于主题根目录
 3. **格式自由**：数字图片支持 GIF/PNG/JPG/WebP/BMP
 4. **实时预览**：修改配置后点击"Reload Themes"即可预览
 
-## 🔧 故障排除
+## 故障排除
 
 **主题未加载**：
 - 检查 `theme.json` 是否为有效 JSON
@@ -191,4 +191,4 @@ cp -r example_mod ~/Library/Containers/com.nekotime.app/Data/Library/Application
 
 ---
 
-**祝你创建出精美的主题！** 🎨✨
+祝你创建出精美的主题！

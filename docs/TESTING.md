@@ -2,16 +2,16 @@
 
 本文档说明如何运行 NekoTime 的各种测试和代码质量检查。
 
-## 📋 目录
+## 目录
 
-- [快速开始](#-快速开始)
-- [测试类型](#-测试类型)
-- [测试脚本](#-测试脚本)
-- [CI/CD 集成](#-cicd-集成)
-- [测试覆盖率](#-测试覆盖率)
-- [常见问题](#-常见问题)
+- [快速开始](#快速开始)
+- [测试类型](#测试类型)
+- [测试脚本](#测试脚本)
+- [CI 集成](#ci-集成)
+- [测试覆盖率](#测试覆盖率)
+- [常见问题](#常见问题)
 
-## 🚀 快速开始
+## 快速开始
 
 ### 运行所有测试
 
@@ -30,7 +30,7 @@ flutter test
 ./tool/quick_test.sh
 ```
 
-## 🧪 测试类型
+## 测试类型
 
 ### 1. 单元测试 (Unit Tests)
 
@@ -93,7 +93,7 @@ flutter format --set-exit-if-changed --dry-run .
 flutter format .
 ```
 
-## 🛠 测试脚本
+## 测试脚本
 
 项目提供了多个测试脚本，位于 `tool/` 目录：
 
@@ -106,13 +106,13 @@ flutter format .
 ```
 
 **包含内容**:
-- ✓ Flutter 环境检查
-- ✓ 依赖获取
-- ✓ 代码分析
-- ✓ 格式检查
-- ✓ 单元测试
-- ✓ 集成测试（可选）
-- ✓ 测试报告生成
+- Flutter 环境检查
+- 依赖获取
+- 代码分析
+- 格式检查
+- 单元测试
+- 集成测试（可选）
+- 测试报告生成
 
 **输出**: 在项目根目录生成 `test_report.txt`
 
@@ -125,9 +125,9 @@ flutter format .
 ```
 
 **包含内容**:
-- ✓ 代码分析
-- ✓ 格式检查
-- ✓ 单元测试
+- 代码分析
+- 格式检查
+- 单元测试
 
 ### `coverage_report.sh` - 覆盖率报告
 
@@ -153,30 +153,18 @@ sudo apt-get install lcov
 sudo dnf install lcov
 ```
 
-## 🔄 CI/CD 集成
+## CI 集成
 
-项目包含 GitHub Actions 工作流配置：`.github/workflows/test.yml`
+`.github/workflows/release.yml`（名称 Release）在推送到 `main`、对 PR（`dry_run`）、每小时 cron（`31 * * * *`）以及手动触发时运行，转调 releasegraph 的可复用工作流；按 `.release-policy.yml` 先在 ubuntu / macOS / windows 三个 runner 上分别执行 `flutter test`，再运行 `scripts/build-release` 构建三平台产物。
 
-### 自动化测试
-
-每次推送或 PR 时自动运行：
-
-1. **代码分析** - 检查代码质量
-2. **格式检查** - 验证代码格式
-3. **单元测试** - 运行所有测试
-4. **构建测试** - 验证各平台构建
+代码分析、格式检查与覆盖率不在 CI 中运行，由本地 `make pre-release`（`clean` + `get` + `analyze` + `test` + `test-coverage`）负责。
 
 ### 查看 CI 结果
 
-1. 访问 GitHub 仓库
-2. 点击 "Actions" 标签
-3. 查看最新的工作流运行
+1. 打开仓库的 Actions 标签页
+2. 选择对应的 workflow run
 
-### 覆盖率报告上传
-
-测试覆盖率会自动上传到 Codecov（如已配置）。
-
-## 📊 测试覆盖率
+## 测试覆盖率
 
 ### 生成覆盖率
 
@@ -210,7 +198,7 @@ start coverage/html/index.html
 - **核心服务**: ≥ 80%
 - **UI 组件**: ≥ 60%
 
-## 📝 编写测试
+## 编写测试
 
 ### 单元测试示例
 
@@ -263,7 +251,7 @@ void main() {
 }
 ```
 
-## 🐛 调试测试
+## 调试测试
 
 ### 详细输出
 
@@ -296,7 +284,7 @@ flutter test test/core/
 flutter test --start-paused
 ```
 
-## ❓ 常见问题
+## 常见问题
 
 ### Q: 测试失败但本地运行正常？
 
@@ -340,14 +328,14 @@ test('异步测试', () async {
 2. 测试已运行: `flutter test --coverage`
 3. 覆盖率文件存在: `coverage/lcov.info`
 
-## 📚 相关资源
+## 相关资源
 
 - [Flutter 测试文档](https://docs.flutter.dev/testing)
 - [Effective Dart: Testing](https://dart.dev/guides/language/effective-dart/testing)
 - [Flutter Widget 测试](https://docs.flutter.dev/cookbook/testing/widget/introduction)
 - [集成测试指南](https://docs.flutter.dev/testing/integration-tests)
 
-## 🎯 最佳实践
+## 最佳实践
 
 1. **编写测试优先** - 新功能先写测试
 2. **保持测试简单** - 一个测试只验证一件事
@@ -355,8 +343,3 @@ test('异步测试', () async {
 4. **避免测试内部实现** - 测试行为，不是实现
 5. **定期运行测试** - 每次提交前运行测试
 6. **维护测试覆盖率** - 保持在目标范围内
-
----
-
-**维护者**: NekoTime 开发团队  
-**最后更新**: 2025-11-18

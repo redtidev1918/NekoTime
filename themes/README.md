@@ -13,7 +13,7 @@
 | **Windows** | `%APPDATA%\com.nekotime.app\themes\` |
 | **Linux** | `~/.local/share/com.nekotime.app/themes/` |
 
-> **注意**：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式。
+注意：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式。
 
 ## 主题结构
 
