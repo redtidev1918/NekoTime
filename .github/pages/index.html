@@ -1,29 +1,92 @@
-<!doctype html>
+<!-- docsite: managed file, run `python3 docsite.py update` to refresh. Edits to this file are overwritten. -->
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NekoTime 文档</title>
-  <meta name="description" content="NekoTime 使用、主题、构建与兼容性文档">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <meta name="description" content="NekoTime 文档中心。内容直接来自仓库里的 Markdown，与代码同步更新。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐱</text></svg>">
+  <link id="theme-css" rel="stylesheet" href="assets/vendor/vue.css">
+  <script>
+    (function () {
+      var saved = localStorage.getItem('nekotime-theme');
+      var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+      if (dark) document.write('<link rel="stylesheet" href="assets/vendor/dark.css">');
+    })();
+  </script>
+  <style>
+    .theme-toggle {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 999;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #334155;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    [data-theme="dark"] .theme-toggle {
+      background: #1f2937;
+      border-color: #475569;
+      color: #fbbf24;
+    }
+  </style>
 </head>
 <body>
   <div id="app">加载中…</div>
+  <button class="theme-toggle" id="theme-toggle" aria-label="切换明暗主题" title="切换明暗主题">🌙</button>
   <script>
     window.$docsify = {
-      name: 'NekoTime',
+      name: '🐱 NekoTime',
+      nameLink: '#/',
       repo: 'redtidev1918/NekoTime',
-      homepage: 'README.md',
       loadSidebar: true,
-      alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
-      },
-      subMaxLevel: 2,
+      // 语言是站点维度：docsify 原生按页面所在目录取 _sidebar.md——
+      // 根页面读 /_sidebar.md，/en/ 页面读 /en/_sidebar.md，无需 alias。
+      // 注意：不要配置 '/.*/_sidebar.md' 之类的通配 alias，它会把 /en/_sidebar.md
+      // 改写回根侧边栏，破坏分语言导航；页内标题也不注入 sidebar（无 subMaxLevel）。
       auto2top: true,
-      search: { placeholder: '搜索文档…', noData: '没有匹配的结果', depth: 3 }
+      search: {
+        placeholder: '搜索文档…',
+        noData: '没有匹配的结果',
+        paths: 'auto',
+        depth: 3
+      }
     };
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="assets/vendor/docsify.min.js"></script>
+  <script src="assets/vendor/search.min.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('theme-toggle');
+      var css = document.getElementById('theme-css');
+      var root = document.documentElement;
+      function apply(dark) {
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        css.href = dark ? 'assets/vendor/dark.css' : 'assets/vendor/vue.css';
+        btn.textContent = dark ? '☀️' : '🌙';
+        localStorage.setItem('nekotime-theme', dark ? 'dark' : 'light');
+      }
+      var dark = localStorage.getItem('nekotime-theme') === 'dark';
+      if (!localStorage.getItem('nekotime-theme')) {
+        dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      apply(dark);
+      btn.addEventListener('click', function () {
+        apply(root.getAttribute('data-theme') !== 'dark');
+      });
+    })();
+  </script>
 </body>
 </html>
