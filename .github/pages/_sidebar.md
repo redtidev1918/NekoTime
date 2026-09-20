@@ -2,13 +2,15 @@
   - [文档首页](/README.md)
   - [下载](/docs/download.md)
 - 使用与定制
-  - [使用指南](/README.md#使用指南)
+  - [使用指南](/docs/USAGE.md)
+  - [主题系统](/docs/THEMES.md)
   - [主题开发](/themes/THEME_GUIDE.md)
   - [应用配置](/docs/APP_CONFIG.md)
 - 构建与支持
   - [构建指南](/docs/BUILD_GUIDE.md)
   - [平台兼容性](/docs/COMPATIBILITY.md)
   - [Linux 故障排查](/docs/LINUX_TROUBLESHOOTING.md)
+  - [技术栈](/docs/TECH_STACK.md)
 - 项目
   - [测试指南](/docs/TESTING.md)
   - [贡献指南](/CONTRIBUTING.md)
