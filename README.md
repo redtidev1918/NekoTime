@@ -180,6 +180,8 @@ flutter build macos --release
 
 ## 更新日志
 
+完整的版本历史与更新说明见 [CHANGELOG.md](CHANGELOG.md)。
+
 ## 文档
 
 README 只讲怎么上手；用法、主题开发与技术栈在文档站 <https://redtidev1918.github.io/NekoTime/>：
@@ -192,7 +194,6 @@ README 只讲怎么上手；用法、主题开发与技术栈在文档站 <https
 | 自己构建 / 排查 | [构建指南](docs/BUILD_GUIDE.md) · [兼容性](docs/COMPATIBILITY.md) · [Linux 排查](docs/LINUX_TROUBLESHOOTING.md) |
 | 参与开发 | [技术栈](docs/TECH_STACK.md) · [测试指南](docs/TESTING.md) |
 
-完整的版本历史与更新说明见 [CHANGELOG.md](CHANGELOG.md)。
 
 ## 测试
 
