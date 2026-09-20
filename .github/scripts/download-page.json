@@ -1,3 +1,4 @@
 {
-  "linkBase": "/docs"
+  "linkBase": "/docs",
+  "docsWorkflow": "static.yml"
 }
