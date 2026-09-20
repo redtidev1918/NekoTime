@@ -5,6 +5,7 @@
   - [使用指南](/docs/USAGE.md)
   - [主题系统](/docs/THEMES.md)
   - [主题开发](/themes/THEME_GUIDE.md)
+  - [主题目录与示例主题](/themes/README.md)
   - [应用配置](/docs/APP_CONFIG.md)
 - 构建与支持
   - [构建指南](/docs/BUILD_GUIDE.md)
