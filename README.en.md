@@ -71,3 +71,14 @@ plus digit images and optional assets. Full reference:
 ## License
 
 [MIT](LICENSE)
+
+## Acknowledgements
+
+NekoTime builds on:
+
+- [Flutter](https://flutter.dev): the cross-platform desktop UI framework.
+- [window_manager](https://pub.dev/packages/window_manager) · [system_tray](https://pub.dev/packages/system_tray): window layering and tray menus.
+- [flutter_acrylic](https://pub.dev/packages/flutter_acrylic): acrylic/blur window backgrounds.
+- [shared_preferences](https://pub.dev/packages/shared_preferences): local settings persistence.
+- [provider](https://pub.dev/packages/provider): state management.
+- [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons): platform app icon generation.

@@ -259,3 +259,14 @@ make pre-release
 ## 许可证
 
 本项目采用 [MIT License](LICENSE) 开源协议。
+
+## 致谢
+
+NekoTime 建立在以下项目之上：
+
+- [Flutter](https://flutter.dev)：跨平台桌面 UI 框架。
+- [window_manager](https://pub.dev/packages/window_manager) · [system_tray](https://pub.dev/packages/system_tray)：窗口置顶、层级与托盘菜单。
+- [flutter_acrylic](https://pub.dev/packages/flutter_acrylic)：窗口毛玻璃与亚克力背景。
+- [shared_preferences](https://pub.dev/packages/shared_preferences)：本地设置持久化。
+- [provider](https://pub.dev/packages/provider)：状态管理。
+- [flutter_launcher_icons](https://pub.dev/packages/flutter_launcher_icons)：各平台应用图标生成。
