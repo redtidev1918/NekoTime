@@ -2,7 +2,7 @@
 
 **Language / 语言:** [中文](README.md) · English
 
-**A cute cross-platform desktop floating cat clock with customizable GIF themes.**
+> **A cute cross-platform desktop floating cat clock with customizable GIF themes.**
 
 📖 [Full documentation](https://redtidev1918.github.io/NekoTime/)
 
