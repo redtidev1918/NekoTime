@@ -281,7 +281,7 @@ Version: 2.1.0-1
 Architecture: amd64
 Maintainer: Your Name <your@email.com>
 Description: NekoTime - 可爱的桌面时钟
- 一款极致轻量、高度可定制的桌面悬浮时钟应用
+ 一款轻量、可自定义的桌面悬浮时钟应用
 Depends: libgtk-3-0, libayatana-appindicator3-1
 EOF
 
