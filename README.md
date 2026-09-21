@@ -4,7 +4,7 @@
 
 > **跨平台桌面悬浮猫娘时钟，支持自定义 GIF 主题。**
 
-📖 [完整文档](https://redtidev1918.github.io/NekoTime/)
+[完整文档](https://redtidev1918.github.io/NekoTime/)
 
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-blue)](https://flutter.dev)
 [![Flutter](https://img.shields.io/badge/Flutter-3.32-02569B?logo=flutter)](https://flutter.dev)
