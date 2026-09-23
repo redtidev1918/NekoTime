@@ -223,7 +223,7 @@ make test-coverage
 
 ### 详细文档
 
-- [测试指南](docs/TESTING.md) - 完整的测试文档和最佳实践
+- [测试指南](docs/TESTING.md) - 测试文档与实践
 - [工具脚本](tool/README.md) - 测试和构建脚本说明
 
 ## 贡献
