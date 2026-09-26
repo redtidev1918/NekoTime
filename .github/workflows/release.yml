@@ -19,6 +19,7 @@ permissions:
   pull-requests: write
   issues: write
   packages: write
+  actions: write # post-release workflow_dispatch from 20ac922+
   id-token: write
 
 jobs:
