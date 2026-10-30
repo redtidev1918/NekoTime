@@ -4,5 +4,20 @@
   "navigation": {
     "allowSidebarAnchors": true,
     "allowCombinedLocales": true
-  }
+  },
+  "repo": "redtidev1918/NekoTime",
+  "description": "NekoTime 文档中心。内容直接来自仓库里的 Markdown，与代码同步更新。",
+  "themeKey": "nekotime-theme",
+  "branch": "main",
+  "engine": "vitepress",
+  "engineVersion": "1.6.4",
+  "version": 2,
+  "packageMode": "merge",
+  "contentPaths": [
+    "*.md",
+    "themes/**",
+    "tool/**",
+    ".github/scripts/*docs.mjs",
+    "LICENSE"
+  ]
 }

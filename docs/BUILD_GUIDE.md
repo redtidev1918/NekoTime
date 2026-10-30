@@ -497,6 +497,6 @@ flutter pub get
 
 - [README.md](/README.md) - 项目概述
 - [COMPATIBILITY.md](COMPATIBILITY.md) - 各平台兼容性说明
-- [LINUX_TROUBLESHOOTING.md](/docs/LINUX_TROUBLESHOOTING.md) - Linux 常见问题排查
+- [LINUX_TROUBLESHOOTING.md](/LINUX_TROUBLESHOOTING.md) - Linux 常见问题排查
 - [APP_CONFIG.md](APP_CONFIG.md) - 应用配置说明
 - [CHANGELOG.md](/CHANGELOG.md) - 更新日志

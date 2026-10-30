@@ -20,13 +20,13 @@ The detailed guides are written in Chinese. Start from the
 
 | Document | Content |
 | :-- | :-- |
-| [使用指南](/README.md#使用指南) | In-app usage |
+| [使用指南](/USAGE.md) | In-app usage |
 | [主题开发](/themes/THEME_GUIDE.md) | Building custom GIF themes |
-| [应用配置](/docs/APP_CONFIG.md) | App configuration reference |
-| [构建指南](/docs/BUILD_GUIDE.md) | Building from source |
-| [平台兼容性](/docs/COMPATIBILITY.md) | Per-platform compatibility |
-| [Linux 故障排查](/docs/LINUX_TROUBLESHOOTING.md) | Linux troubleshooting |
-| [测试指南](/docs/TESTING.md) | Testing guide |
+| [应用配置](/APP_CONFIG.md) | App configuration reference |
+| [构建指南](/BUILD_GUIDE.md) | Building from source |
+| [平台兼容性](/COMPATIBILITY.md) | Per-platform compatibility |
+| [Linux 故障排查](/LINUX_TROUBLESHOOTING.md) | Linux troubleshooting |
+| [测试指南](/TESTING.md) | Testing guide |
 
 ## Links
 

@@ -125,5 +125,5 @@ themes/
 2. 打开托盘菜单 → 点击 **"Reload Themes"**
 3. 托盘菜单 → **Theme** → 选择你的主题
 
-详细主题开发指南见 [themes/THEME_GUIDE.md](themes/THEME_GUIDE.md)。
+详细主题开发指南见 [themes/THEME_GUIDE.md](/themes/THEME_GUIDE.md)。
 
