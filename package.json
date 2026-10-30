@@ -1,0 +1,16 @@
+{
+  "name": "docs",
+  "private": true,
+  "docsite-managed-file": true,
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "predocs:build": "node .github/scripts/prepare-docs.mjs",
+    "predocs:dev": "node .github/scripts/prepare-docs.mjs",
+    "postdocs:build": "node .github/scripts/finish-docs.mjs"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4"
+  }
+}

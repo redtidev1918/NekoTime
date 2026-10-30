@@ -39,3 +39,23 @@ pubspec.lock
 dist/
 android/
 ios/
+
+node_modules/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Generated from root documents, themes and tools by prepare-docs.mjs
+/docs/README.md
+/docs/README.en.md
+/docs/CHANGELOG.md
+/docs/CONTRIBUTING.md
+/docs/SECURITY.md
+/docs/themes/
+/docs/tool/
+/docs/public/themes/
+/docs/public/tool/
+/docs/public/LICENSE
+/docs/public/LICENSE.txt
+
+# Migration backups remain local; complete pre-migration snapshot is external.
+*.docsite.bak
