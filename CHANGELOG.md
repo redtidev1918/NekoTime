@@ -5,6 +5,13 @@ NekoTime 的所有重要变更都将记录在此文件中。
 本日志格式基于 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.0.0/)，
 项目遵循[语义化版本](https://semver.org/lang/zh-CN/)规范。
 
+## [2.3.5](https://github.com/redtidev1918/NekoTime/compare/v2.3.4...v2.3.5) (2026-11-03)
+
+
+### Bug Fixes
+
+* restore NekoTime documentation home routes ([#31](https://github.com/redtidev1918/NekoTime/issues/31)) ([8a48791](https://github.com/redtidev1918/NekoTime/commit/8a48791745f7a6898d1f6d9a0c35fb18bd18b3a1))
+
 ## [未发布]
 
 ## [2.3.0] - 2025-12-09
