@@ -12,6 +12,8 @@
 
 [查看 Release 说明与校验和](https://github.com/redtidev1918/NekoTime/releases/tag/v2.3.4)
 
+![NekoTime 软件预览](/screenshots/demo.gif)
+
 | 平台 | 文件 | 大小 | 下载 |
 |---|---|---|---|
 | Linux · x64 | `NekoTime-Linux-x64-v2.3.4.tar.gz` | 8.0 MB | [下载](https://github.com/redtidev1918/NekoTime/releases/download/v2.3.4/NekoTime-Linux-x64-v2.3.4.tar.gz) |
