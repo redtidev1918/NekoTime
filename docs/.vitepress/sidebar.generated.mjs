@@ -7,7 +7,7 @@ export default {
       "items": [
         {
           "text": "文档首页",
-          "link": "/README"
+          "link": "/"
         },
         {
           "text": "下载",
@@ -106,7 +106,7 @@ export default {
       "items": [
         {
           "text": "Documentation Home",
-          "link": "/en/README"
+          "link": "/en/"
         },
         {
           "text": "Download",
@@ -119,7 +119,7 @@ export default {
       "items": [
         {
           "text": "文档首页",
-          "link": "/README"
+          "link": "/"
         }
       ]
     }

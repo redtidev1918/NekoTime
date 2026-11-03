@@ -344,7 +344,7 @@ build/linux/x64/release/bundle/neko_time
 
 ## 相关文档
 
-- [README.md](/README.md) - 项目概述和快速开始
+- [文档首页](/) - 项目概述和快速开始
 - [CHANGELOG.md](/CHANGELOG.md) - 版本更新历史
 - [BUILD_GUIDE.md](BUILD_GUIDE.md) - 详细构建指南
 - [themes/THEME_GUIDE.md](/themes/THEME_GUIDE.md) - 主题开发指南

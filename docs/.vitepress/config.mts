@@ -15,10 +15,7 @@ export default defineConfig({
   // _sidebar.md 是导航源文件,不作为页面发布
   srcExclude: ['**/_sidebar.md'],
   // 首页内容源仍是 docs/README.md(docs/en/README.md),访问 / 与 /en/
-  rewrites: {
-    'README.md': 'index.md',
-    'en/README.md': 'en/index.md',
-  },
+  rewrites: {"README.md": "index.md", "en/README.md": "en/index.md"},
   head: [
     ['link', {
       rel: 'icon',
@@ -58,6 +55,7 @@ export default defineConfig({
     },
   },
   themeConfig: {
+    i18nRouting: false,
     sidebar,
     search: {
       provider: 'local',

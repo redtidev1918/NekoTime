@@ -45,7 +45,6 @@ docs/.vitepress/dist/
 docs/.vitepress/cache/
 
 # Generated from root documents, themes and tools by prepare-docs.mjs
-/docs/README.md
 /docs/README.en.md
 /docs/CHANGELOG.md
 /docs/CONTRIBUTING.md

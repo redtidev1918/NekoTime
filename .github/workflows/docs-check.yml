@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           repository: redtidev1918/docsite
-          ref: 3fa6b643de6d2843ce713ccacb16e4ca2475656b
+          ref: 50d839c8fc097d4a24601fb3dc2651c6a5382fbf
           path: .docsite-tool
           persist-credentials: false
       - name: Check managed files and navigation after preparing source copies
@@ -42,7 +42,7 @@ jobs:
           cp -R docs .github .docsite.json .gitignore package.json package-lock.json "$RUNNER_TEMP/docs-check/"
           python3 .docsite-tool/docsite.py check "$RUNNER_TEMP/docs-check"
           python3 .docsite-tool/docsite.py navcheck "$RUNNER_TEMP/docs-check"
-          test -f docs/.vitepress/dist/index.html
+          python3 .github/scripts/check-docs-routes.py
           test -f docs/.vitepress/dist/themes/THEME_GUIDE.html
           test -f docs/.vitepress/dist/themes/builtin/frosted_glass/digits/0.gif
           test -f docs/.vitepress/dist/tool/run_tests.sh
