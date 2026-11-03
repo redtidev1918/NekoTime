@@ -108,7 +108,6 @@ system tray (the menu bar on macOS).
 | Opacity | tray menu → Opacity (30%–100%) |
 | Window layer | tray menu → Layer (Desktop / Top) |
 | Lock position | tray menu → Lock Position |
-| Settings | tray menu → Settings |
 
 The interface follows your system language by default; switch between
 Simplified Chinese and English in the tray menu → Language. More details in
@@ -121,8 +120,7 @@ digit GIFs, and fonts or background images are optional.
 
 Three steps to your own theme:
 
-1. Tray menu → Open Theme Folder (the path can also be copied from the
-   Settings dialog);
+1. Tray menu → Open Theme Folder;
 2. Create a new folder based on the built-in `example_mod` and edit
    `theme.json`;
 3. Tray menu → Reload Themes to see the result.

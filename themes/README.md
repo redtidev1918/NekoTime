@@ -4,7 +4,7 @@
 
 ## 目录位置
 
-主题目录位于应用支持目录下。**最简单的方法**：打开设置对话框，底部会显示完整路径。
+主题目录位于应用支持目录下。**最简单的方法**：托盘菜单 → **Open Theme Folder**，可直接打开。
 
 | 平台 | 路径 |
 |------|------|
@@ -84,7 +84,7 @@ themes/
 ### 1. 创建主题文件夹
 
 ```bash
-# macOS (Sandbox 模式，从设置对话框获取实际路径)
+# macOS (Sandbox 模式，路径见上表)
 mkdir -p ~/Library/Containers/com.nekotime.app/Data/Library/Application\ Support/com.nekotime.app/themes/my_theme
 
 # Windows

@@ -424,7 +424,7 @@ my_theme/
 
 ### 查找主题目录
 
-**最简单的方法**：打开设置对话框，底部会显示完整的主题目录路径。
+**最简单的方法**：托盘菜单 → **Open Theme Folder**，可直接在文件管理器中打开主题目录。
 
 ### 各平台路径
 
@@ -435,7 +435,7 @@ my_theme/
 | **Windows** | `%APPDATA%\com.nekotime.app\themes\` |
 | **Linux** | `~/.local/share/com.nekotime.app/themes/` |
 
-注意：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式，路径较长。建议直接从设置对话框复制路径。
+注意：从 DMG 或 App Store 安装的 macOS 版本使用 Sandbox 模式，路径较长。可通过托盘菜单的"打开主题文件夹"直接打开。
 
 ### 快速打开主题目录 (macOS)
 
@@ -459,9 +459,8 @@ open ~/Library/Application\ Support/NekoTime/themes
 
 ### 查看日志
 
-1. 打开设置对话框
-2. 点击 **View Logs**
-3. 查找主题加载错误信息
+日志文件位于应用支持目录的 `logs/app.log`（各平台应用支持目录见
+[应用配置](../docs/APP_CONFIG.md)），可直接用文本编辑器打开，查找主题加载错误信息。
 
 常见错误：
 - JSON 语法错误
