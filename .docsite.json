@@ -11,6 +11,7 @@
   "branch": "main",
   "engine": "vitepress",
   "engineVersion": "1.6.4",
+  "i18nRouting": false,
   "version": 2,
   "packageMode": "merge",
   "contentPaths": [

@@ -18,15 +18,12 @@ function documentText(text, source) {
   if (!source.includes('/')) text = text.replace(/([("'])docs\//g, '$1./')
   text = text.replace(/\]\(LICENSE\)/g, '](/LICENSE.txt)')
   text = text.replace(/\]\(\.\.\/docs\//g, '](../')
-  if (source === 'README.md') {
-    text = text.replace(/\]\(#使用指南\)/g, '](/USAGE.md)')
-      .replace(/\]\(#主题系统\)/g, '](/THEMES.md)')
-      .replace(/\]\(#技术栈\)/g, '](/TECH_STACK.md)')
-  }
+  if (source === 'README.en.md') text = text.replace('](README.md)', '](/)')
+  if (source === 'tool/README.md') text = text.replace('](../README.md)', '](/)')
   return text
 }
 
-for (const file of ['README.md', 'README.en.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md']) {
+for (const file of ['README.en.md', 'CHANGELOG.md', 'CONTRIBUTING.md', 'SECURITY.md']) {
   await writeFile(path.join(docs, file), documentText(await readFile(path.join(root, file), 'utf8'), file))
 }
 await cp(path.join(root, 'LICENSE'), path.join(publicDir, 'LICENSE'))

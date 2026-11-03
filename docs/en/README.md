@@ -1,6 +1,6 @@
 # NekoTime Documentation
 
-**Language / 语言:** [中文](/README.md) · English
+**Language / 语言:** [中文](/) · English
 
 NekoTime is a lightweight desktop floating clock with customizable GIF themes for
 macOS, Windows and Linux. The theme system works like game mods: drop a theme folder in
@@ -16,7 +16,7 @@ and it shows up in the app.
 ## Chinese guides (English index)
 
 The detailed guides are written in Chinese. Start from the
-[documentation home](/README.md), or jump directly to:
+[documentation home](/), or jump directly to:
 
 | Document | Content |
 | :-- | :-- |

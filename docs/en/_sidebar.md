@@ -1,6 +1,6 @@
 - Getting Started
-  - [Documentation Home](/en/README.md)
+  - [Documentation Home](/en/)
   - [Download](/en/download.md)
 
 - 中文
-  - [文档首页](/README.md)
+  - [文档首页](/)
