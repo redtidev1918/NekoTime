@@ -175,7 +175,7 @@ Type=Application
 | Windows | `%APPDATA%\com.nekotime.app\` |
 | Linux | `~/.local/share/com.nekotime.app/` |
 
-**建议从设置对话框底部复制完整路径。** 首次运行新版本时，需要手动迁移主题和配置文件。
+可通过托盘菜单的"打开主题文件夹"直接打开对应目录。首次运行新版本时，需要手动迁移主题和配置文件。
 
 ---
 
