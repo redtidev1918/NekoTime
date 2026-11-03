@@ -12,6 +12,8 @@ GitHub Actions generates this page from release assets. If the page has not been
 
 [Release notes and checksums](https://github.com/redtidev1918/NekoTime/releases/tag/v2.3.4)
 
+![NekoTime app preview](/screenshots/demo.gif)
+
 | Platform | File | Size | Download |
 |---|---|---|---|
 | All platforms | `RELEASE-METADATA.json` | 1 KB | [Download](https://github.com/redtidev1918/NekoTime/releases/download/v2.3.4/RELEASE-METADATA.json) |

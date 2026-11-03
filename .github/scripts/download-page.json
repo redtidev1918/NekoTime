@@ -1,4 +1,8 @@
 {
   "linkBase": "",
-  "docsWorkflow": "docs.yml"
+  "docsWorkflow": "docs.yml",
+  "previewFile": ".github/scripts/download-previews/zh.md",
+  "previewFiles": {
+    "en": ".github/scripts/download-previews/en.md"
+  }
 }
